@@ -28,6 +28,9 @@
     "editor-e2e": {
       "tags": [],
       "implicitDependencies": ["editor"]
+    },
+    "common-toolbar-editor": {
+      "tags": []
     }
   }
 }
