@@ -1,18 +1,25 @@
 <div class="container">
-  <h1>Angular Editor</h1>
-  <p><a href="https://github.com/kolkov/toolbar-editor">Get it here</a></p>
+  <div class="editor">
+    <toolbar-editor
+      id="editor1"
+      [(ngModel)]="htmlContent1"
+      [config]="config1"
+      (ngModelChange)="onChange($event)"
+      (blur)="onBlur($event)"
+    ></toolbar-editor>
+  </div>
+  <div class="separator">
+    drag
+  </div>
+  <div class="preview">
+    <article [innerHTML]="htmlContent1"></article>
+  </div>
 
-  <label for="test_input">Test input </label>
-  <input id="test_input" />
-  <br /><br />
-  <toolbar-editor
-    id="editor1"
-    [(ngModel)]="htmlContent1"
-    [config]="config1"
-    (ngModelChange)="onChange($event)"
-    (blur)="onBlur($event)"
-  ></toolbar-editor>
-  <p class="html">HTML Output: {{ htmlContent1 }}</p>
+  <!-- <p>Form Value: {{ form.value.signature }}</p>
+  <p>Form Status: {{ form.status }}</p> -->
+</div>
+
+<!--
   <form [formGroup]="form">
     <toolbar-editor
       autofocus="true"
@@ -22,6 +29,15 @@
       (ngModelChange)="onChange2($event)"
     ></toolbar-editor>
   </form>
-  <p>Form Value: {{ form.value.signature }}</p>
-  <p>Form Status: {{ form.status }}</p>
-</div>
+      
+<p class="html">HTML Output: {{ htmlContent1 }}</p>
+  <label for="test_input">Test input </label>
+  <input id="test_input" />
+  <br /><br />
+ -->
+
+<!-- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam qui adipisci
+minima laboriosam ipsum temporibus consequuntur eligendi odio praesentium quis
+debitis voluptatem blanditiis, nisi expedita dolor voluptatibus aperiam ea
+dolore.
+ -->

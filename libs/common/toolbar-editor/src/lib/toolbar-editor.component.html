@@ -1,6 +1,5 @@
 <div
-  class="angular-editor"
-  #angularEditor
+  class="toolbar-editor"
   [style.width]="config.width"
   [style.minWidth]="config.minWidth"
 >
@@ -18,10 +17,10 @@
     (execute)="executeCommand($event)"
   ></toolbar-editor-row>
 
-  <div class="angular-editor-wrapper" #editorWrapper>
+  <div class="toolbar-editor-wrapper" #editorWrapper>
     <div
       #editor
-      class="angular-editor-textarea"
+      class="toolbar-editor-textarea"
       [attr.contenteditable]="config.editable"
       [attr.tabindex]="disabled ? -1 : tabIndex"
       [attr.translate]="config.translate"
@@ -37,7 +36,7 @@
       (keyup)="exec()"
       (mouseout)="onTextAreaMouseOut($event)"
     ></div>
-    <span class="angular-editor-placeholder">{{
+    <span class="toolbar-editor-placeholder">{{
       placeholder || config['placeholder']
     }}</span>
   </div>

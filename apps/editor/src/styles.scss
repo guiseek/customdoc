@@ -1,2 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/cdk/overlay-prebuilt.css';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,800;0,900;1,500&display=swap';
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+}

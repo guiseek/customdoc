@@ -13,10 +13,7 @@ import { ToolbarEditorService } from '../toolbar-editor.service';
 import { HttpResponse } from '@angular/common/http';
 import { DOCUMENT } from '@angular/common';
 import { CustomClass } from '../config';
-import {
-  ToolbarEditorSelectComponent,
-  SelectOption,
-} from '../select/toolbar-editor-select.component';
+import { SelectOption } from '../select/toolbar-editor-select.component';
 
 @Component({
   selector: 'toolbar-editor-row',
