@@ -417,6 +417,18 @@
             "passWithNoTests": true,
             "setupFile": "libs/common/compodoc-viewer/src/test-setup.ts"
           }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "libs/common/compodoc-viewer/tsconfig.lib.json",
+            "outputPath": "dist/compodoc/common-compodoc-viewer"
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            }
+          }
         }
       },
       "schematics": {

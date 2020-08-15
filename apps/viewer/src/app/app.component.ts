@@ -10,15 +10,13 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'viewer';
   compodoc$: Observable<Object>;
-  
+  doc = '/compodoc/common-compodoc-viewer/documentation.json';
   constructor(
     private http: HttpClient
   ) {}
 
   ngOnInit() {
-    this.compodoc$ = this.http.get(
-      '/compodoc/common-split-content/documentation.json'
-    );
+    this.compodoc$ = this.http.get(this.doc);
   }
   onChange(item?) {
     console.log(item);

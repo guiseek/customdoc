@@ -1,0 +1,7 @@
+<p>search works!</p>
+
+<input type="text" [formControl]="searchControl">
+
+<div>
+  <pre>{{ filteredDocumentation$ | async | json }}</pre>
+</div>
