@@ -17,7 +17,7 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": ["build", "lint", "test", "e2e", "compodoc"]
       }
     }
   },
@@ -33,6 +33,16 @@
       "tags": []
     },
     "common-split-content": {
+      "tags": []
+    },
+    "viewer": {
+      "tags": []
+    },
+    "viewer-e2e": {
+      "tags": [],
+      "implicitDependencies": ["viewer"]
+    },
+    "common-compodoc-viewer": {
       "tags": []
     }
   }

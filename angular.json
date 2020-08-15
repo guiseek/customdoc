@@ -160,6 +160,24 @@
             "passWithNoTests": true,
             "setupFile": "libs/common/toolbar-editor/src/test-setup.ts"
           }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "libs/common/toolbar-editor/tsconfig.lib.json",
+            "outputPath": "dist/compodoc/common-toolbar-editor"
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            },
+            "html": {
+              "exportFormat": "html",
+              "workspaceDocs": true,
+              "language": "pt-BR",
+              "theme": "material"
+            }
+          }
         }
       },
       "schematics": {
@@ -203,6 +221,213 @@
             "tsConfig": "libs/common/split-content/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "libs/common/split-content/src/test-setup.ts"
+          }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "libs/common/split-content/tsconfig.lib.json",
+            "outputPath": "dist/compodoc/common-split-content"
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            },
+            "html": {
+              "exportFormat": "html",
+              "theme": "stripe",
+              "language": "pt-BR",
+              "hideGenerator": true,
+              "disablePrivate": true,
+              "disableInternal": true
+            }
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "viewer": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/viewer",
+      "sourceRoot": "apps/viewer/src",
+      "prefix": "docentro",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/viewer",
+            "index": "apps/viewer/src/index.html",
+            "main": "apps/viewer/src/main.ts",
+            "polyfills": "apps/viewer/src/polyfills.ts",
+            "tsConfig": "apps/viewer/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/viewer/src/favicon.ico",
+              "apps/viewer/src/assets",
+              {
+                "glob": "**/*.json",
+                "input": "dist/compodoc",
+                "output": "./compodoc"
+              }
+            ],
+            "styles": ["apps/viewer/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/viewer/src/environments/environment.ts",
+                  "with": "apps/viewer/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "viewer:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "viewer:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "viewer:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/viewer/tsconfig.app.json",
+              "apps/viewer/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/viewer/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/viewer/jest.config.js",
+            "tsConfig": "apps/viewer/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/viewer/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "viewer-e2e": {
+      "root": "apps/viewer-e2e",
+      "sourceRoot": "apps/viewer-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/viewer-e2e/cypress.json",
+            "tsConfig": "apps/viewer-e2e/tsconfig.e2e.json",
+            "devServerTarget": "viewer:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "viewer:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/viewer-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/viewer-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "common-compodoc-viewer": {
+      "projectType": "library",
+      "root": "libs/common/compodoc-viewer",
+      "sourceRoot": "libs/common/compodoc-viewer/src",
+      "prefix": "compodoc",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/common/compodoc-viewer/tsconfig.lib.json",
+            "project": "libs/common/compodoc-viewer/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/common/compodoc-viewer/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/compodoc-viewer/tsconfig.lib.json",
+              "libs/common/compodoc-viewer/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/common/compodoc-viewer/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/compodoc-viewer/jest.config.js",
+            "tsConfig": "libs/common/compodoc-viewer/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/common/compodoc-viewer/src/test-setup.ts"
+          }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "libs/common/compodoc-viewer/tsconfig.lib.json",
+            "outputPath": "dist/compodoc/common-compodoc-viewer"
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            }
           }
         }
       },
