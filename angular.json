@@ -204,6 +204,18 @@
             "passWithNoTests": true,
             "setupFile": "libs/common/split-content/src/test-setup.ts"
           }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "libs/common/split-content/tsconfig.lib.json",
+            "outputPath": "dist/compodoc/common-split-content"
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            }
+          }
         }
       },
       "schematics": {
