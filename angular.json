@@ -167,6 +167,50 @@
           "style": "scss"
         }
       }
+    },
+    "common-split-content": {
+      "projectType": "library",
+      "root": "libs/common/split-content",
+      "sourceRoot": "libs/common/split-content/src",
+      "prefix": "split",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/common/split-content/tsconfig.lib.json",
+            "project": "libs/common/split-content/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/common/split-content/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/split-content/tsconfig.lib.json",
+              "libs/common/split-content/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/split-content/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/split-content/jest.config.js",
+            "tsConfig": "libs/common/split-content/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/common/split-content/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

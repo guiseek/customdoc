@@ -1,20 +1,18 @@
 <div class="container">
-  <div class="editor">
-    <toolbar-editor
-      id="editor1"
-      [(ngModel)]="htmlContent1"
-      [config]="config1"
-      (ngModelChange)="onChange($event)"
-      (blur)="onBlur($event)"
-    ></toolbar-editor>
-  </div>
-  <div class="separator">
-    drag
-  </div>
-  <div class="preview">
-    <article [innerHTML]="htmlContent1"></article>
-  </div>
-
+  <split-content direction="horizontal" unit="percent">
+    <div class="editor" split-content-area>
+      <toolbar-editor
+        id="editor1"
+        [(ngModel)]="htmlContent1"
+        [config]="config1"
+        (ngModelChange)="onChange($event)"
+        (blur)="onBlur($event)"
+      ></toolbar-editor>
+    </div>
+    <div class="preview" split-content-area>
+      <article [innerHTML]="htmlContent1"></article>
+    </div>
+  </split-content>
   <!-- <p>Form Value: {{ form.value.signature }}</p>
   <p>Form Status: {{ form.status }}</p> -->
 </div>

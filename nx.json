@@ -31,6 +31,9 @@
     },
     "common-toolbar-editor": {
       "tags": []
+    },
+    "common-split-content": {
+      "tags": []
     }
   }
 }

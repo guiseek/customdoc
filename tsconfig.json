@@ -18,6 +18,9 @@
     "paths": {
       "@docentro/common/toolbar-editor": [
         "libs/common/toolbar-editor/src/index.ts"
+      ],
+      "@docentro/common/split-content": [
+        "libs/common/split-content/src/index.ts"
       ]
     }
   },

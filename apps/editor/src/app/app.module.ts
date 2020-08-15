@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
+import { SplitContentModule } from '@docentro/common/split-content';
 import { ToolbarEditorModule } from '@docentro/common/toolbar-editor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,6 +16,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     ReactiveFormsModule,
     ToolbarEditorModule,
+    SplitContentModule
   ],
   providers: [],
   bootstrap: [AppComponent],
