@@ -21,6 +21,9 @@
       ],
       "@docentro/common/split-content": [
         "libs/common/split-content/src/index.ts"
+      ],
+      "@docentro/common/compodoc-viewer": [
+        "libs/common/compodoc-viewer/src/index.ts"
       ]
     }
   },

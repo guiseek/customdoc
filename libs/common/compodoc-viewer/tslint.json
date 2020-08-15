@@ -1,0 +1,10 @@
+{
+  "extends": "../../../tslint.json",
+  "rules": {
+    "directive-selector": [true, "attribute", "compodoc", "camelCase"],
+    "component-selector": [true, "element", "compodoc", "kebab-case"]
+  },
+  "linterOptions": {
+    "exclude": ["!**/*"]
+  }
+}

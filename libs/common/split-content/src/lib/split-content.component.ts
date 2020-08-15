@@ -37,6 +37,21 @@ import {
   updateAreaSize,
 } from './split-content.utils';
 
+/**
+ * Componente separador de conteúdos
+ * 
+ * @example
+ * 
+ * <split-content direction="horizontal" unit="percent">
+ *   <div split-content-area> <!-- conteúdo --> </div>
+ *   <div split-content-area> <!-- conteúdo --> </div>
+ * </split-content>
+ * 
+ * @export
+ * @class SplitContentComponent
+ * @implements {AfterViewInit}
+ * @implements {OnDestroy}
+ */
 @Component({
   selector: 'split-content',
   templateUrl: './split-content.component.html',

@@ -14,6 +14,13 @@ import { getInputBoolean, getInputPositiveNumber } from './split-content.utils';
   selector: '[splitContentArea],[split-content-area],split-content-area',
 })
 export class SplitContentDirective implements OnInit, OnDestroy {
+  /**
+   * @description Define a ordem das áreas
+   * 
+   * @private
+   * @type {(number | null)}
+   * @memberOf SplitContentDirective
+   */
   private _order: number | null = null;
 
   @Input() set order(v: number | null) {
@@ -26,8 +33,12 @@ export class SplitContentDirective implements OnInit, OnDestroy {
     return this._order;
   }
 
-  ////
-
+  /**
+   * @description Define tamanho da área
+   * 
+   * @type {(number | null)}
+   * @memberOf SplitContentDirective
+   */
   public _size: number | null = null;
 
   @Input() set size(v: number | null) {
@@ -40,8 +51,13 @@ export class SplitContentDirective implements OnInit, OnDestroy {
     return this._size;
   }
 
-  ////
-
+  /**
+   * @description Limitar tamanho mínimo da área
+   * 
+   * @private
+   * @type {(number | null)}
+   * @memberOf SplitContentDirective
+   */
   private _minSize: number | null = null;
 
   @Input() set minSize(v: number | null) {
@@ -54,8 +70,13 @@ export class SplitContentDirective implements OnInit, OnDestroy {
     return this._minSize;
   }
 
-  ////
-
+  /**
+   * @description Limita o tamanho máximo
+   * 
+   * @private
+   * @type {(number | null)}
+   * @memberOf SplitContentDirective
+   */
   private _maxSize: number | null = null;
 
   @Input() set maxSize(v: number | null) {
@@ -68,9 +89,14 @@ export class SplitContentDirective implements OnInit, OnDestroy {
     return this._maxSize;
   }
 
-  ////
-
-  private _lockSize: boolean = false;
+  /**
+   * @description Bloqueia o tamanho definido
+   * 
+   * @private
+   * 
+   * @memberOf SplitContentDirective
+   */
+  private _lockSize = false;
 
   @Input() set lockSize(v: boolean) {
     this._lockSize = getInputBoolean(v);
@@ -82,8 +108,13 @@ export class SplitContentDirective implements OnInit, OnDestroy {
     return this._lockSize;
   }
 
-  ////
-
+  /**
+   * @description Define a visibilidade da área
+   * 
+   * @private
+   * 
+   * @memberOf SplitContentDirective
+   */
   private _visible = true;
 
   @Input() set visible(v: boolean) {
@@ -102,8 +133,13 @@ export class SplitContentDirective implements OnInit, OnDestroy {
     return this._visible;
   }
 
-  ////
-
+  /**
+   * @internal
+   * 
+   * @private
+   * @type {Function}
+   * @memberOf SplitContentDirective
+   */
   private transitionListener: Function;
   private readonly lockListeners: Array<Function> = [];
 
@@ -124,7 +160,7 @@ export class SplitContentDirective implements OnInit, OnDestroy {
         this.elRef.nativeElement,
         'transitionend',
         (event: TransitionEvent) => {
-          // Limit only flex-basis transition to trigger the event
+          // trigger de transição só em flex-basis
           if (event.propertyName === 'flex-basis') {
             this.split.notify('transitionEnd', -1);
           }
@@ -144,7 +180,10 @@ export class SplitContentDirective implements OnInit, OnDestroy {
     isMin: boolean,
     isMax: boolean
   ): void {
-    // Need 3 separated properties to work on IE11 (https://github.com/angular/flex-layout/issues/323)
+    /**
+     * Precisa de 3 propriedades separadas para funcionar no IE11
+     * @see https://github.com/angular/flex-layout/issues/323
+     */
     this.renderer.setStyle(this.elRef.nativeElement, 'flex-grow', grow);
     this.renderer.setStyle(this.elRef.nativeElement, 'flex-shrink', shrink);
     this.renderer.setStyle(this.elRef.nativeElement, 'flex-basis', basis);

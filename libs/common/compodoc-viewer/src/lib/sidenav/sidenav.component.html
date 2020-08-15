@@ -1,0 +1,17 @@
+<nav>
+  <ul *ngIf="navigation">
+    <li *ngFor="let s of navigation">
+      <a [routerLink]="['/', s.section]">{{ s.section }}</a>
+
+      <ul>
+        <li *ngFor="let item of s.items">
+          <a
+            [routerLink]="['/', s.section, item.id]"
+            (click)="itemChange.emit(item)"
+            >{{ item.name }}</a
+          >
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
