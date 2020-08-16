@@ -1,0 +1,14 @@
+<div class="container">
+  <split-content direction="horizontal" unit="percent">
+    <div class="editor" split-content-area>
+
+      <toolbar-markdown></toolbar-markdown>
+
+      <article id="markdown" contenteditable></article>
+
+    </div>
+    <div class="preview" split-content-area>
+      <article [innerHTML]="markdownContent"></article>
+    </div>
+  </split-content>
+</div>
