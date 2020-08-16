@@ -170,7 +170,8 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
     private cdRef: ChangeDetectorRef,
     private renderer: Renderer2
   ) {
-    // To force adding default class, could be override by user @Input() or not
+    // Adiciona classe default, pode
+    // ser sobreescrita com @Input()
     this.direction = this._direction;
   }
 
@@ -239,7 +240,7 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
 
   public ngAfterViewInit() {
     this.ngZone.runOutsideAngular(() => {
-      // To avoid transition at first rendering
+      // Evita transition no primeiro render
       setTimeout(() =>
         this.renderer.addClass(this.elRef.nativeElement, 'as-init')
       );
@@ -314,9 +315,9 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
       this.displayedAreas.indexOf(area),
       1
     );
-    areas.forEach((area) => {
-      area.order = 0;
-      area.size = 0;
+    areas.forEach((a) => {
+      a.order = 0;
+      a.size = 0;
     });
     this.hidedAreas.push(...areas);
 
@@ -351,24 +352,25 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
   private build(resetOrders: boolean, resetSizes: boolean): void {
     this.stopDragging();
 
-    // ¤ AREAS ORDER
+    // ¤ orderm de áreas
 
     if (resetOrders === true) {
-      // If user provided 'order' for each area, use it to sort them.
+      // Dev informando `order` para cada área, use-o para classificá-las.
       if (this.displayedAreas.every((a) => a.component.order !== null)) {
         this.displayedAreas.sort(
           (a, b) => <number>a.component.order - <number>b.component.order
         );
       }
 
-      // Then set real order with multiples of 2, numbers between will be used by gutters.
+      // Em seguida, defina a ordem real com múltiplos de 2,
+      // os demais números entre eles usaremos nos gutters.
       this.displayedAreas.forEach((area, i) => {
         area.order = i * 2;
         area.component.setStyleOrder(area.order);
       });
     }
 
-    // ¤ AREAS SIZE
+    // ¤ Tamanho das áreas
 
     if (resetSizes === true) {
       const useUserSizes = isUserSizesValid(
@@ -401,7 +403,7 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
               (a) => a.component.size === null
             );
 
-            // No wildcard area > Need to select one arbitrarily > first
+            // Sem área curinga, deve pegar a primeira aleatória
             if (
               wildcardSizeAreas.length === 0 &&
               this.displayedAreas.length > 0
@@ -412,7 +414,7 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
                 area.maxSize = i === 0 ? null : getAreaMaxSize(area);
               });
             }
-            // More than one wildcard area > Need to keep only one arbitrarly > first
+            // Mais de uma área curinga deve manter a primeira aleatória
             else if (wildcardSizeAreas.length > 1) {
               let alreadyGotOne = false;
               this.displayedAreas.forEach((area) => {
@@ -446,9 +448,9 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
 
   private refreshStyleSizes(): void {
     ///////////////////////////////////////////
-    // PERCENT MODE
+    // Modo percentagem
     if (this.unit === 'percent') {
-      // Only one area > flex-basis 100%
+      // Apenas uma área > flex-basis 100%
       if (this.displayedAreas.length === 1) {
         this.displayedAreas[0].component.setStyleFlex(
           0,
@@ -458,7 +460,7 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
           false
         );
       }
-      // Multiple areas > use each percent basis
+      // Múltiplas áreas, use cada base percentual
       else {
         const sumGutterSize = this.getNbGutters() * this.gutterSize;
 
@@ -476,10 +478,10 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
       }
     }
     ///////////////////////////////////////////
-    // PIXEL MODE
+    // Modo pixel
     else if (this.unit === 'pixel') {
       this.displayedAreas.forEach((area) => {
-        // Area with wildcard size
+        // Área com tamanho curinga
         if (area.size === null) {
           if (this.displayedAreas.length === 1) {
             area.component.setStyleFlex(1, 1, `100%`, false, false);
@@ -487,13 +489,13 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
             area.component.setStyleFlex(1, 1, `auto`, false, false);
           }
         }
-        // Area with pixel size
+        // Área com tamanho de pixel
         else {
-          // Only one area > flex-basis 100%
+          // Só uma área > flex-basis 100%
           if (this.displayedAreas.length === 1) {
             area.component.setStyleFlex(0, 0, `100%`, false, false);
           }
-          // Multiple areas > use each pixel basis
+          // Múltiplas áreas, use pixel de base para cada uma
           else {
             area.component.setStyleFlex(
               0,
@@ -513,20 +515,21 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
   public clickGutter(event: MouseEvent | TouchEvent, gutterNum: number): void {
     const tempPoint = getPointFromEvent(event);
 
-    // Be sure mouseup/touchend happened at same point as mousedown/touchstart to trigger click/dblclick
+    // Certifique-se de que o mouseup / touchend acontece no mesmo
+    // ponto que o mouse / touchstart para acionar o clique / clique dbl
     if (
       this.startPoint &&
       this.startPoint.x === tempPoint.x &&
       this.startPoint.y === tempPoint.y
     ) {
-      // If timeout in progress and new click > clearTimeout & dblClickEvent
+      // Se o tempo limite estiver em andamento e novo clique em > clearTimeout & dblClickEvent
       if (this._clickTimeout !== null) {
         window.clearTimeout(this._clickTimeout);
         this._clickTimeout = null;
         this.notify('dblclick', gutterNum);
         this.stopDragging();
       }
-      // Else start timeout to call clickEvent at end
+      // Outro tempo limite de início para chamar clickEvent no final
       else {
         this._clickTimeout = window.setTimeout(() => {
           this._clickTimeout = null;
@@ -568,7 +571,7 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
           area.component.elRef,
           this.direction
         ),
-        sizePercentAtStart: this.unit === 'percent' ? area.size : -1, // If pixel mode, anyway, will not be used.
+        sizePercentAtStart: this.unit === 'percent' ? area.size : -1, // Modo pixel não será usado
       };
 
       if (area.order < gutterOrder) {
@@ -652,7 +655,7 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
       return;
     }
 
-    // Calculate steppedOffset
+    // Calculate StepOffset
 
     let offset =
       this.direction === 'horizontal'
@@ -670,7 +673,7 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
 
     this.snapshot.lastSteppedOffset = steppedOffset;
 
-    // Need to know if each gutter side areas could reacts to steppedOffset
+    // É preciso saber se cada área gutter lateral pode reagir a um deslocamento escalonado
 
     let areasBefore = getGutterSideAbsorptionCapacity(
       this.unit,
@@ -685,7 +688,7 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
       this.snapshot.allAreasSizePixel
     );
 
-    // Each gutter side areas can't absorb all offset
+    // Cada área lateral da calha não pode absorver todo o deslocamento
     if (areasBefore.remain !== 0 && areasAfter.remain !== 0) {
       if (Math.abs(areasBefore.remain) === Math.abs(areasAfter.remain)) {
       } else if (Math.abs(areasBefore.remain) > Math.abs(areasAfter.remain)) {
@@ -704,7 +707,7 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
         );
       }
     }
-    // Areas before gutter can't absorbs all offset > need to recalculate sizes for areas after gutter.
+    // As áreas antes da calha não podem absorver todo o deslocamento> é necessário recalcular os tamanhos das áreas após a calha.
     else if (areasBefore.remain !== 0) {
       areasAfter = getGutterSideAbsorptionCapacity(
         this.unit,
@@ -713,7 +716,7 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
         this.snapshot.allAreasSizePixel
       );
     }
-    // Areas after gutter can't absorbs all offset > need to recalculate sizes for areas before gutter.
+    // As áreas após a sarjeta não conseguem absorver todo o deslocamento> é necessário recalcular os tamanhos das áreas antes da sarjeta.
     else if (areasAfter.remain !== 0) {
       areasBefore = getGutterSideAbsorptionCapacity(
         this.unit,
@@ -724,8 +727,8 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
     }
 
     if (this.unit === 'percent') {
-      // Hack because of browser messing up with sizes using calc(X% - Ypx) -> el.getBoundingClientRect()
-      // If not there, playing with gutters makes total going down to 99.99875% then 99.99286%, 99.98986%,..
+      // Hackear por causa do navegador bagunçar com tamanhos usando calc (X% - Ypx) -> el.getBoundingClientRect()
+      // Se não estiver lá, brincar com sarjetas faz com que o total caia para 99,99875% e depois 99,99286%, 99,98986%,..
       const all = [...areasBefore.list, ...areasAfter.list];
       const areaToReset = all.find(
         (a) =>
@@ -743,7 +746,7 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
       }
     }
 
-    // Now we know areas could absorb steppedOffset, time to really update sizes
+    // Agora sabemos que as áreas podem absorver StepOffset, hora de realmente atualizar os tamanhos
 
     areasBefore.list.forEach((item) => updateAreaSize(this.unit, item));
     areasAfter.list.forEach((item) => updateAreaSize(this.unit, item));
@@ -769,11 +772,11 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
       if (fct) fct();
     }
 
-    // Warning: Have to be before "notify('end')"
-    // because "notify('end')"" can be linked to "[size]='x'" > "build()" > "stopDragging()"
+    // Aviso: tem que ser antes de "notify('fim')"
+    // porque "notify('end')" "pode ser vinculado a "[size]='x'">" build()" > "stopDragging()"
     this.isDragging = false;
 
-    // If moved from starting point, notify end
+    // Se movido do ponto de partida, notifique o fim
     if (
       this.endPoint &&
       (this.startPoint.x !== this.endPoint.x ||
@@ -789,7 +792,7 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
     );
     this.snapshot = null;
 
-    // Needed to let (click)="clickGutter(...)" event run and verify if mouse moved or not
+    // Necessário para permitir que o evento (click)="clickGutter(...)" seja executado e verifique se o mouse foi movido ou não
     this.ngZone.runOutsideAngular(() => {
       setTimeout(() => {
         this.startPoint = null;
@@ -817,7 +820,8 @@ export class SplitContentComponent implements AfterViewInit, OnDestroy {
         this.ngZone.run(() => this.transitionEndSubscriber.next(sizes));
       }
     } else if (type === 'progress') {
-      // Stay outside zone to allow users do what they want about change detection mechanism.
+      // Fique fora da zona para permitir que os usuários façam o
+      // que quiserem sobre o mecanismo de detecção de alterações.
       this.dragProgressSubject.next({ gutterNum, sizes });
     }
   }

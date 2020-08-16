@@ -462,6 +462,50 @@
           }
         }
       }
+    },
+    "common-markdown-tool": {
+      "projectType": "library",
+      "root": "libs/common/markdown-tool",
+      "sourceRoot": "libs/common/markdown-tool/src",
+      "prefix": "customdoc",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/common/markdown-tool/tsconfig.lib.json",
+            "project": "libs/common/markdown-tool/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/common/markdown-tool/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/markdown-tool/tsconfig.lib.json",
+              "libs/common/markdown-tool/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/markdown-tool/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/markdown-tool/jest.config.js",
+            "tsConfig": "libs/common/markdown-tool/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/common/markdown-tool/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

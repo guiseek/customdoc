@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,23 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     ReactiveFormsModule,
     ToolbarEditorModule,
-    SplitContentModule
+    SplitContentModule,
+    RouterModule.forRoot(
+      [
+        { path: '', pathMatch: 'full', redirectTo: 'markdown' },
+        {
+          path: 'markdown',
+          loadChildren: () =>
+            import('./markdown/markdown.module').then((m) => m.MarkdownModule),
+        },
+        {
+          path: 'document',
+          loadChildren: () =>
+            import('./document/document.module').then((m) => m.DocumentModule),
+        },
+      ],
+      { initialNavigation: 'enabled' }
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],

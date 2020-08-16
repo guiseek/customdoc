@@ -1,7 +1,10 @@
-$fa-font-path: 'https://netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts' !default;
+// $fa-font-path: 'https://netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts' !default;
 
 :host {
   display: block;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 a {
   cursor: pointer;

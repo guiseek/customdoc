@@ -1,0 +1,39 @@
+<div class="container">
+  <split-content direction="horizontal" unit="percent">
+    <div class="editor" split-content-area>
+      <toolbar-editor
+        id="editor1"
+        [(ngModel)]="htmlContent1"
+        [config]="config1"
+        (ngModelChange)="onChange($event)"
+        (blur)="onBlur($event)"
+      ></toolbar-editor>
+    </div>
+    <div class="preview" split-content-area>
+      <article [innerHTML]="htmlContent1"></article>
+    </div>
+  </split-content>
+</div>
+
+<!--
+  <form [formGroup]="form">
+    <toolbar-editor
+      autofocus="true"
+      id="editor2"
+      formControlName="signature"
+      [config]="config2"
+      (ngModelChange)="onChange2($event)"
+    ></toolbar-editor>
+  </form>
+      
+<p class="html">HTML Output: {{ htmlContent1 }}</p>
+  <label for="test_input">Test input </label>
+  <input id="test_input" />
+  <br /><br />
+ -->
+
+<!-- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam qui adipisci
+minima laboriosam ipsum temporibus consequuntur eligendi odio praesentium quis
+debitis voluptatem blanditiis, nisi expedita dolor voluptatibus aperiam ea
+dolore.
+ -->

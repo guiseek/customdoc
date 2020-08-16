@@ -47,6 +47,9 @@
     },
     "util-formatting": {
       "tags": []
+    },
+    "common-markdown-tool": {
+      "tags": []
     }
   }
 }

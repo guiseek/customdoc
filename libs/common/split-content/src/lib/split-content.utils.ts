@@ -55,7 +55,7 @@ export function isUserSizesValid(
   unit: 'percent' | 'pixel',
   sizes: Array<number | null>
 ): boolean {
-  // All sizes have to be not null and total should be 100
+  // Todos os tamanhos não podem ser nulos e o total deve ser 100
   if (unit === 'percent') {
     const total = sizes.reduce(
       (total, s) => (s !== null ? total + s : total),
@@ -64,7 +64,7 @@ export function isUserSizesValid(
     return sizes.every((s) => s !== null) && total > 99.9 && total < 100.1;
   }
 
-  // A size at null is mandatory but only one.
+  // Um tamanho nulo é obrigatório, mas apenas um.
   if (unit === 'pixel') {
     return sizes.filter((s) => s === null).length === 1;
   }
@@ -148,7 +148,7 @@ function getAreaAbsorptionCapacity(
     };
   }
 
-  // Area start at zero and need to be reduced, not possible
+  // Área começa em zero e precisa ser reduzida, não é possível
   if (areaSnapshot.sizePixelAtStart === 0 && pixels < 0) {
     return {
       areaSnapshot,
@@ -183,15 +183,15 @@ function getAreaAbsorptionCapacityPercent(
   const tempPixelSize = areaSnapshot.sizePixelAtStart + pixels;
   const tempPercentSize = (tempPixelSize / allAreasSizePixel) * 100;
 
-  // ENLARGE AREA
+  // Ampliar área
 
   if (pixels > 0) {
-    // If maxSize & newSize bigger than it > absorb to max and return remaining pixels
+    // Se maxSize & newSize for maior do que> absorver para o máximo e retornar os pixels restantes
     if (
       areaSnapshot.area.maxSize !== null &&
       tempPercentSize > areaSnapshot.area.maxSize
     ) {
-      // Use area.area.maxSize as newPercentSize and return calculate pixels remaining
+      // Use area.area.maxSize como newPercentSize e retorne calcular os pixels restantes
       const maxSizePixel =
         (areaSnapshot.area.maxSize / 100) * allAreasSizePixel;
       return {
@@ -209,14 +209,14 @@ function getAreaAbsorptionCapacityPercent(
     };
   }
 
-  // REDUCE AREA
+  // Reduzir área
   else if (pixels < 0) {
-    // If minSize & newSize smaller than it > absorb to min and return remaining pixels
+    // Se minSize e newSize menor do que> absorver para min e retornar os pixels restantes
     if (
       areaSnapshot.area.minSize !== null &&
       tempPercentSize < areaSnapshot.area.minSize
     ) {
-      // Use area.area.minSize as newPercentSize and return calculate pixels remaining
+      // Use area.area.minSize como newPercentSize e retorne calcular os pixels restantes
       const minSizePixel =
         (areaSnapshot.area.minSize / 100) * allAreasSizePixel;
       return {
@@ -226,9 +226,9 @@ function getAreaAbsorptionCapacityPercent(
         pixelRemain: areaSnapshot.sizePixelAtStart + pixels - minSizePixel,
       };
     }
-    // If reduced under zero > return remaining pixels
+    // Se reduzido abaixo de zero> retorne os pixels restantes
     else if (tempPercentSize < 0) {
-      // Use 0 as newPercentSize and return calculate pixels remaining
+      // Use 0 como newPercentSize e retorne calcule os pixels restantes
       return {
         areaSnapshot,
         pixelAbsorb: -areaSnapshot.sizePixelAtStart,
@@ -252,10 +252,10 @@ function getAreaAbsorptionCapacityPixel(
 ): IAreaAbsorptionCapacity {
   const tempPixelSize = areaSnapshot.sizePixelAtStart + pixels;
 
-  // ENLARGE AREA
+  // Ampliar área
 
   if (pixels > 0) {
-    // If maxSize & newSize bigger than it > absorb to max and return remaining pixels
+    // Se maxSize & newSize for maior do que> absorver para o máximo e retornar os pixels restantes
     if (
       areaSnapshot.area.maxSize !== null &&
       tempPixelSize > areaSnapshot.area.maxSize
@@ -277,7 +277,7 @@ function getAreaAbsorptionCapacityPixel(
 
   // REDUCE AREA
   else if (pixels < 0) {
-    // If minSize & newSize smaller than it > absorb to min and return remaining pixels
+    // Se minSize e newSize menor do que> absorver para min e retornar os pixels restantes
     if (
       areaSnapshot.area.minSize !== null &&
       tempPixelSize < areaSnapshot.area.minSize
@@ -289,7 +289,7 @@ function getAreaAbsorptionCapacityPixel(
         pixelRemain: tempPixelSize - areaSnapshot.area.minSize,
       };
     }
-    // If reduced under zero > return remaining pixels
+    // Se reduzido abaixo de zero> retorne os pixels restantes
     else if (tempPixelSize < 0) {
       return {
         areaSnapshot,
@@ -314,7 +314,7 @@ export function updateAreaSize(
   if (unit === 'percent') {
     item.areaSnapshot.area.size = item.percentAfterAbsorption;
   } else if (unit === 'pixel') {
-    // Update size except for the wildcard size area
+    // Atualizar o tamanho, exceto para a área de tamanho do curinga
     if (item.areaSnapshot.area.size !== null) {
       item.areaSnapshot.area.size =
         item.areaSnapshot.sizePixelAtStart + item.pixelAbsorb;

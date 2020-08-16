@@ -13,7 +13,7 @@ export interface IArea {
   maxSize: number | null;
 }
 
-// CREATED ON DRAG START
+// Criado no evento Drag Start
 
 export interface ISplitSnapshot {
   gutterNum: number;
@@ -30,7 +30,7 @@ export interface IAreaSnapshot {
   sizePercentAtStart: number;
 }
 
-// CREATED ON DRAG PROGRESS
+// Criado no evento Drag Progress
 
 export interface ISplitSideAbsorptionCapacity {
   remain: number;
@@ -44,7 +44,7 @@ export interface IAreaAbsorptionCapacity {
   pixelRemain: number;
 }
 
-// CREATED TO SEND OUTSIDE
+// Criado para enviar para fora
 
 export interface IOutputData {
   gutterNum: number;

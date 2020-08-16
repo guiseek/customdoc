@@ -29,7 +29,7 @@
     overflow-x: hidden;
     overflow-y: auto;
 
-    /* When <as-split-area [visible]="false"> force size to 0. */
+    /* Quando <as-split-area [visible]="false"> force tamano em 0. */
 
     &.as-hidden {
       flex: 0 1 0 !important;
@@ -78,19 +78,15 @@
     }
   }
 
-  /* When disabled remove gutters background image and specific cursor. */
+  /* Quando desabilitado remova cursor específico. */
 
   &.as-disabled {
     & > .as-split-gutter {
       cursor: default;
-
-      .as-split-gutter-icon {
-        // background-image: url("");
-      }
     }
   }
 
-  /* Add transition only when transition enabled + split initialized + not currently dragging. */
+  /* Add transition só quando transition habilitada + split inicializado + não sendo o dragging atual  */
 
   &.as-transition.as-init:not(.as-dragging) {
     & > .as-split-gutter,
