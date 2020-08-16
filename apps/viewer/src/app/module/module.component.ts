@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'docentro-module',
+  selector: 'customdoc-module',
   templateUrl: './module.component.html',
   styleUrls: ['./module.component.css']
 })

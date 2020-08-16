@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
-import { CompodocViewerModule } from '@docentro/common/compodoc-viewer';
+import { CompodocViewerModule } from '@customdoc/common/compodoc-viewer';
 
 const routes: Routes = [
   {

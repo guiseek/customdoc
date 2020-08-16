@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { debounceTime, filter, map, switchMap } from 'rxjs/operators';
 import { compodoc, CompodocResult } from './search.interfaces';
-import { clearToSearch } from '@docentro/util/formatting';
+import { clearToSearch } from '@customdoc/util/formatting';
 import { Observable } from 'rxjs';
 
 const searchInProperties = [

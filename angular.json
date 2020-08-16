@@ -10,7 +10,7 @@
       },
       "root": "apps/editor",
       "sourceRoot": "apps/editor/src",
-      "prefix": "docentro",
+      "prefix": "customdoc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -259,7 +259,7 @@
       },
       "root": "apps/viewer",
       "sourceRoot": "apps/viewer/src",
-      "prefix": "docentro",
+      "prefix": "customdoc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

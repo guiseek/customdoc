@@ -1,5 +1,5 @@
 {
-  "name": "@docentro/split-content",
+  "name": "@customdoc/split-content",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^9.1.12",

@@ -16,16 +16,16 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@docentro/common/toolbar-editor": [
+      "@customdoc/common/toolbar-editor": [
         "libs/common/toolbar-editor/src/index.ts"
       ],
-      "@docentro/common/split-content": [
+      "@customdoc/common/split-content": [
         "libs/common/split-content/src/index.ts"
       ],
-      "@docentro/common/compodoc-viewer": [
+      "@customdoc/common/compodoc-viewer": [
         "libs/common/compodoc-viewer/src/index.ts"
       ],
-      "@docentro/util/formatting": ["libs/util/formatting/src/index.ts"]
+      "@customdoc/util/formatting": ["libs/util/formatting/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

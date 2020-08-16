@@ -1,5 +1,5 @@
 {
-  "name": "@docentro/toolbar-editor",
+  "name": "@customdoc/toolbar-editor",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^9.1.12",

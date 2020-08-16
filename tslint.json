@@ -57,7 +57,7 @@
       true,
       {
         "enforceBuildableLibDependency": true,
-        "allow": ["@docentro/util/formatting"],
+        "allow": ["@customdoc/util/formatting"],
         "depConstraints": [
           {
             "sourceTag": "*",

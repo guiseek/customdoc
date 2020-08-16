@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToolbarEditorConfig } from '@docentro/common/toolbar-editor';
+import { ToolbarEditorConfig } from '@customdoc/common/toolbar-editor';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
