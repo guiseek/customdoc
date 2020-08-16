@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CompodocSection } from '../sidenav.interfaces';
 
 @Component({
   selector: 'compodoc-sidenav-section',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenav-section.component.scss']
 })
 export class SidenavSectionComponent implements OnInit {
+  @Input() nav: CompodocSection;
 
   constructor() { }
 

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CompodocViewer } from '../../compodoc-viewer.interfaces';
 
 @Component({
   selector: 'compodoc-component',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./component.component.scss']
 })
 export class ComponentComponent implements OnInit {
-
+  @Input() doc: CompodocViewer.Component;
   constructor() { }
 
   ngOnInit(): void {

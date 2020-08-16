@@ -1,7 +1,8 @@
-<p>search works!</p>
-
 <input type="text" [formControl]="searchControl">
 
+<section *ngFor="let result of filteredDocumentation$ | async">
+  <compodoc-search-result [doc]="result"></compodoc-search-result>
+</section>
 <div>
   <pre>{{ filteredDocumentation$ | async | json }}</pre>
 </div>

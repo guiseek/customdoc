@@ -1,16 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { debounceTime, filter, map, switchMap } from 'rxjs/operators';
-import { CompodocViewer } from '../compodoc-viewer.interfaces';
+import { compodoc, CompodocResult } from './search.interfaces';
+import { clearToSearch } from '@docentro/util/formatting';
+import { Observable } from 'rxjs';
 
-type valueof<T> = T[keyof T];
+const searchInProperties = [
+  'name',
+  'file',
+  'type',
+  'selector',
+  'description',
+  'sourceCode',
+  'templateData',
+];
 
-type CompodocResult = {
-  type: string;
-} & {
-  results: valueof<CompodocViewer.Compodoc>;
+const searchInValues = (data: compodoc, layer: keyof compodoc, query = '') => {
+  return Object.keys(data).filter((k) =>
+    searchInProperties.includes(k)
+      ? clearToSearch(data[layer].toString()).indexOf(clearToSearch(query)) > -1
+      : []
+  );
 };
 
 @Component({
@@ -20,7 +31,7 @@ type CompodocResult = {
 })
 export class SearchComponent implements OnInit {
   @Input() url: string;
-  @Input() documentation$: Observable<CompodocViewer.Compodoc>;
+  @Input() documentation$: Observable<compodoc>;
 
   filteredDocumentation$: Observable<CompodocResult[]>;
 
@@ -43,41 +54,44 @@ export class SearchComponent implements OnInit {
       switchMap((value) => this.filterDocumentation(value as string))
     );
   }
-  filterDocumentation(query = ''): Observable<CompodocResult[]> {
-    return this.http.get<CompodocViewer.Compodoc>(this.url).pipe(
+  filterDocumentation(rawQuery = ''): Observable<CompodocResult[]> {
+    const query = clearToSearch(rawQuery);
+
+    return this.http.get<compodoc>(this.url).pipe(
       map((documentation) => {
+
         const results = [];
 
         const interfaces = documentation.interfaces.filter(
-          (c) => c.name.indexOf(query) > -1
+          (d) => clearToSearch(d.name).indexOf(query) > -1
         );
         if (interfaces) {
           results.push({ type: 'interfaces', results: interfaces });
         }
 
         const components = documentation.components.filter(
-          (c) => c.name.indexOf(query) > -1
+          (d) => clearToSearch(d.name).indexOf(query) > -1
         );
         if (components) {
           results.push({ type: 'components', results: components });
         }
 
         const directives = documentation.directives.filter(
-          (c) => c.name.indexOf(query) > -1
+          (d) => clearToSearch(d.name).indexOf(query) > -1
         );
         if (directives) {
           results.push({ type: 'directives', results: components });
         }
 
         const modules = documentation.modules.filter(
-          (c) => c.name.indexOf(query) > -1
+          (d) => clearToSearch(d.name).indexOf(query) > -1
         );
         if (modules) {
           results.push({ type: 'modules', results: components });
         }
 
         const pipes = documentation.pipes.filter(
-          (c) => c.name.indexOf(query) > -1
+          (d) => clearToSearch(d.name).indexOf(query) > -1
         );
         if (pipes) {
           results.push({ type: 'pipes', results: components });

@@ -1,0 +1,20 @@
+<div [ngSwitch]="doc?.type">
+
+  <ng-container *ngSwitchCase="'interfaces'">
+    <h3>Interfaces</h3>
+    <compodoc-interface *ngFor="let interface of doc.results" [doc]="interface"></compodoc-interface>
+  </ng-container>
+  <ng-container *ngSwitchCase="'components'">
+    <h3>Componentes</h3>
+    <compodoc-component *ngFor="let component of doc.results" [doc]="component"></compodoc-component>
+  </ng-container>
+  <ng-container *ngSwitchCase="'directives'">
+    <h3>Diretivas</h3>
+    <compodoc-directive *ngFor="let directive of doc.results"></compodoc-directive>
+  </ng-container>
+  <ng-container *ngSwitchCase="'modules'">
+    <h3>Módulos</h3>
+    <compodoc-module *ngFor="let module of doc.results"></compodoc-module>
+  </ng-container>
+  
+</div>

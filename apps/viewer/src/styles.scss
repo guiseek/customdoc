@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --doc-source-code-padding: 10px;
+  --doc-source-code-color: #111;
+  --doc-source-code-border-color: #333;
+  --doc-source-code-background: rgb(245, 245, 245);
+}
+
+
+.flex-table {
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
+  width: 100%;
+
+  div, header, footer {
+    display: flex;
+  }
+  
+  span {
+    flex: 1;
+  }
+
+  > header {
+    line-height: 1.5;
+    padding: 8px;
+    text-align: left;
+    vertical-align: bottom;
+  }
+  div {
+    border-top: 1px dashed lighten(#222, 60%);
+    line-height: 1.5;
+    padding: 8px;
+    vertical-align: top;
+  }
+}

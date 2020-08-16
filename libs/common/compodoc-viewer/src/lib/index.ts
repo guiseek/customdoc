@@ -1,13 +1,10 @@
-export * from './class';
-export * from './component';
-export * from './directive';
-export * from './input-class';
-export * from './interface';
-export * from './method-class';
-export * from './module';
-export * from './output-class';
-export * from './property-class';
+export * from './views';
+
+export * from './viewer';
+
 export * from './sidenav';
-export * from './source-code';
+
+export * from './search';
+
 export * from './compodoc-viewer.interfaces';
 export * from './compodoc-viewer.module';

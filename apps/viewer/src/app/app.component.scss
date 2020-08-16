@@ -1,11 +1,15 @@
 :host {
   display: flex;
   height: 100%;
+  max-width: 100%;
 
   aside {
-    max-width: 600px;
+    width: 300px;
+    max-width: 360px;
+    min-width: 260px;
   }
   main {
+    overflow: auto;
     flex: 1;
   }
 }

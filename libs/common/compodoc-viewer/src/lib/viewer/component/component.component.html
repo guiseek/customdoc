@@ -1,0 +1,27 @@
+<h3>{{ doc.name }}</h3>
+
+<section class="flex-table">
+  <div>
+    <span>Seletor</span>
+    <span>{{ doc.selector }}</span>
+  </div>
+  <div>
+    <span>Component</span>
+    <span>{{ doc.file }}</span>
+  </div>
+  <div>
+    <span>Template</span>
+    <span>{{ doc.templateUrl }}</span>
+  </div>
+  <div>
+    <span>Styles</span>
+    <span>{{ doc.styleUrls }}</span>
+  </div>
+</section>
+
+<ng-container *ngIf="doc.sourceCode">
+  <h4>Código</h4>
+  <compodoc-source-code [code]="doc.sourceCode"></compodoc-source-code>
+</ng-container>
+
+<code>{{ doc | json }}</code>

@@ -1,0 +1,38 @@
+<h3>{{ doc.name }}</h3>
+
+<section class="flex-table">
+  <div>
+    <span>Component</span>
+    <span>{{ doc.file }}</span>
+  </div>
+  <div>
+    <span>Extends</span>
+    <span>{{ doc.extends }}</span>
+  </div>
+</section>
+
+<section class="flex-table">
+  <header>
+    <span>Nome</span>
+    <span>Tipo</span>
+    <span>Opcioinal</span>
+    <span>Descrição</span>
+    <span>Linha</span>
+  </header>
+  <div *ngFor="let prop of doc.properties">
+    <span>{{ prop.name }}</span>
+    <span>{{ prop.type }}</span>
+    <span>{{ prop.optional }}</span>
+    <span>{{ prop.description }}</span>
+    <span>{{ prop.line }}</span>
+  </div>
+  
+</section>
+
+
+<ng-container *ngIf="doc.sourceCode">
+  <h4>Código</h4>
+  <compodoc-source-code [code]="doc.sourceCode"></compodoc-source-code>
+</ng-container>
+
+<code>{{ doc | json }}</code>

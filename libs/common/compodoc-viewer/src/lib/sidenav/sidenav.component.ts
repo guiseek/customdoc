@@ -1,19 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CompodocViewer } from '../compodoc-viewer.interfaces';
-
-// type valueof<T> = T[keyof T];
-// export type CompodocSections = keyof CompodocViewer.Compodoc;
-export interface CompodocSection {
-  name: string;
-  id: string;
-  file: string;
-}
-type CompodocEntries = [keyof CompodocViewer.Compodoc, CompodocSection[]];
-
-export interface CompodocNavigation {
-  section: keyof CompodocViewer.Compodoc;
-  items: CompodocSection[];
-}
+import { CompodocEntry, CompodocSection } from './sidenav.interfaces';
 
 @Component({
   selector: 'compodoc-sidenav',
@@ -21,30 +8,21 @@ export interface CompodocNavigation {
   styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit {
-
   @Output() itemChange = new EventEmitter();
 
-  public navigation: CompodocNavigation[] = [];
+  public navigation: CompodocSection[] = [];
   private _documentation: CompodocViewer.Compodoc;
   @Input() set documentation(doc: CompodocViewer.Compodoc) {
     this._documentation = doc;
     if (doc) {
-      this.navigation = Object.entries(doc).filter(([key, values]) => Array.isArray(values)).map(
-        ([key, values]: CompodocEntries) => {
-          return {
-            section: key,
-            items: values
-            // items: values.map(({ file, id, name }) => ({ file, id, name })),
-          };
-        }
-      );
+      this.navigation = Object.entries(doc)
+        .filter(([_, v]) => Array.isArray(v))
+        .map(([section, items]: CompodocEntry) => ({ section, items }));
     }
   }
   get documentation(): CompodocViewer.Compodoc {
     return this._documentation;
   }
-  // sections
-  constructor() {}
 
   ngOnInit(): void {
     if (this.documentation) {
