@@ -25,7 +25,10 @@
       "@customdoc/common/compodoc-viewer": [
         "libs/common/compodoc-viewer/src/index.ts"
       ],
-      "@customdoc/util/formatting": ["libs/util/formatting/src/index.ts"]
+      "@customdoc/util/formatting": ["libs/util/formatting/src/index.ts"],
+      "@customdoc/common/markdown-tool": [
+        "libs/common/markdown-tool/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MarkdownRoutingModule } from './markdown-routing.module';
 import { MarkdownComponent } from './markdown.component';
 import { SplitContentModule } from '@customdoc/common/split-content';
-import { ToolbarEditorMarkdownModule } from '@customdoc/common/toolbar-editor';
+import { MarkdownToolModule } from '@customdoc/common/markdown-tool';
 import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [{ path: '', component: MarkdownComponent }];
@@ -15,7 +15,7 @@ const routes: Routes = [{ path: '', component: MarkdownComponent }];
     CommonModule,
     SplitContentModule,
     ReactiveFormsModule,
-    ToolbarEditorMarkdownModule,
+    MarkdownToolModule,
     MarkdownRoutingModule,
     RouterModule.forChild(routes),
   ],

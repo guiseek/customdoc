@@ -21,23 +21,13 @@ const contentOptions: MarkedOptions = {
 })
 export class MarkdownComponent implements OnInit {
   markdownContent: SafeHtml = '';
-  markdown: HTMLElement;
-  constructor(
-    private sanitizer: DomSanitizer,
-    private elRef: ElementRef<HTMLElement>,
-    private renderer: Renderer2
-  ) {}
+
+  onChange(change?) {
+    console.log(change);
+    this.markdownContent = change;
+  }
 
   ngOnInit(): void {
-    const markdown = this.elRef.nativeElement.querySelector('#markdown');
-    
-    this.renderer.listen(markdown, 'input', (evt: HTMLInputEvent) => {
-      const content = evt.target.innerText;
-      const markdownContent = parse(content, contentOptions);
-      this.markdownContent = this.sanitize(markdownContent);
-    });
-  }
-  sanitize(content: string) {
-    return this.sanitizer.bypassSecurityTrustHtml(content);
+
   }
 }
