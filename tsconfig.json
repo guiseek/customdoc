@@ -24,7 +24,8 @@
       ],
       "@docentro/common/compodoc-viewer": [
         "libs/common/compodoc-viewer/src/index.ts"
-      ]
+      ],
+      "@docentro/util/formatting": ["libs/util/formatting/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
