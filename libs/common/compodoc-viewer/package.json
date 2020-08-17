@@ -6,6 +6,11 @@
     "email": "guiseek@gmail.com",
     "url": "https://guiseek.dev.br"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/guiseek/customdoc.git"
+  },
+  "private": false,
   "peerDependencies": {
     "@angular/common": "^9.1.12",
     "@angular/core": "^9.1.12"

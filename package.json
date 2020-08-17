@@ -2,6 +2,15 @@
   "name": "customdoc",
   "version": "0.0.0",
   "license": "MIT",
+  "author": {
+    "name": "Guilherme Siquinelli",
+    "email": "guiseek@gmail.com",
+    "url": "https://guiseek.dev.br"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/guiseek/customdoc.git"
+  },
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
@@ -40,7 +49,7 @@
       "path": "@commitlint/prompt"
     }
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^9.1.0",
     "@angular/cdk": "^9.2.4",
