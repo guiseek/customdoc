@@ -6,4 +6,4 @@ This library was generated with [Nx](https://nx.dev).
 
 Run `nx test common-split-content` to execute the unit tests.
 
-Usado como base projeto https://bertrandg.github.io/angular-split/#/
+Projeto usado como base da 404 atualmente https://bertrandg.github.io/angular-split/#/ Ainda sim, fica os créditos.

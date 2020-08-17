@@ -46,6 +46,6 @@ function createReleaseRulesWithScopeFilter(projectScope) {
   ];
 }
 
-export {
+module.exports = {
   createReleaseRulesWithScopeFilter,
 };

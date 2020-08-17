@@ -5,3 +5,4 @@ export * from './markdown-toolbar/index';
 export * from './markdown-tool.module';
 export * from './markdown.interfaces';
 export * from './markdown.service';
+export * from './utils/index';

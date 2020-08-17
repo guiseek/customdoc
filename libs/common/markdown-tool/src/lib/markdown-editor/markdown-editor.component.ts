@@ -2,6 +2,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Input,
   OnInit,
   Output,
   Renderer2,
@@ -16,6 +17,7 @@ import { MarkdownService } from '../markdown.service';
   styleUrls: ['./markdown-editor.component.scss'],
 })
 export class MarkdownEditorComponent implements OnInit {
+  @Input() value: string;
   @Output() markdownChange = new EventEmitter<SafeHtml>();
 
   constructor(

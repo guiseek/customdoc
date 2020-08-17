@@ -1,13 +1,13 @@
-import { createCommitTransformerWithScopeFilter } from './commit-transformer';
-import { createReleaseRulesWithScopeFilter } from './release-rules';
+const { createCommitTransformerWithScopeFilter } = require('./commit-transformer');
+const { createReleaseRulesWithScopeFilter } = require('./release-rules');
 
-const buildReversePath = (path: string) =>
+const buildReversePath = (path) =>
   path
     .split('/')
     .map(() => '..')
     .join('/');
 
-const toolsScript = (script: string, ...args: string[]) =>
+const toolsScript = (script, ...args) =>
   [
     'ts-node',
     '--project tools/tsconfig.tools.json',
@@ -15,9 +15,9 @@ const toolsScript = (script: string, ...args: string[]) =>
     ...args,
   ].join(' ');
 
-const formatFile = (file: string) => `nx format:write --files ${file}`;
-const copyFile = (file: string, dest: string) => `cp ${file} ${dest}`;
-const insertVersions = (packageRoot: string) =>
+const formatFile = (file) => `nx format:write --files ${file}`;
+const copyFile = (file, dest) => `cp ${file} ${dest}`;
+const insertVersions = (packageRoot) =>
   toolsScript('release/insert-versions.ts', packageRoot);
 
 function createReleaseConfigWithScopeFilter({

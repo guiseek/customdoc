@@ -364,6 +364,13 @@
               "exportFormat": "json"
             }
           }
+        },
+        "release": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [{ "command": "npx semantic-release" }],
+            "cwd": "libs/common/compodoc-viewer"
+          }
         }
       },
       "schematics": {
@@ -419,6 +426,13 @@
             "json": {
               "exportFormat": "json"
             }
+          }
+        },
+        "release": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [{ "command": "npx semantic-release" }],
+            "cwd": "libs/common/markdown-tool"
           }
         }
       },

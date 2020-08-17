@@ -101,4 +101,4 @@ function createCommitTransformerWithScopeFilter(projectScope) {
   };
 }
 
-export { createCommitTransformerWithScopeFilter };
+module.exports = { createCommitTransformerWithScopeFilter };
