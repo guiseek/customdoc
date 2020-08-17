@@ -370,7 +370,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx semantic-release"
+                "command": "npx semantic-release -d"
               }
             ],
             "cwd": "libs/common/compodoc-viewer"

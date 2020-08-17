@@ -51,14 +51,10 @@ async function insertVersions(packageRoot: string) {
   const resolvedPackageRoot = resolve(packageRoot);
 
   const packageJsonPath = join(resolvedPackageRoot, 'package.json');
-  const versionsJsPath = join(
-    resolvedPackageRoot,
-    'esm5',
-    'lib',
-    'utils',
-    'versions.js'
-  );
 
+  const packageJson = await import(packageJsonPath);
+  const versionsJsPath = join(resolvedPackageRoot, packageJson.main);
+  
   if (!existsSync(packageJsonPath)) {
     throw new Error(
       `No package.json found in package directory: ${resolvedPackageRoot}`
@@ -69,8 +65,8 @@ async function insertVersions(packageRoot: string) {
     return;
   }
 
-  const packageJson = await import(packageJsonPath);
   const { versions } = await import(versionsJsPath);
+  
   const packages = Object.keys(versions);
 
   const originalVersionsJs = readFileSync(versionsJsPath, 'utf8');
