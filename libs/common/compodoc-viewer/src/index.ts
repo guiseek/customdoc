@@ -1,3 +1,5 @@
+export * from './lib/utils/versions';
+
 export * from './lib/views/index';
 
 export * from './lib/viewer/index';

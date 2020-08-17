@@ -53,7 +53,8 @@ async function insertVersions(packageRoot: string) {
   const packageJsonPath = join(resolvedPackageRoot, 'package.json');
   const versionsJsPath = join(
     resolvedPackageRoot,
-    'src',
+    'esm5',
+    'lib',
     'utils',
     'versions.js'
   );
