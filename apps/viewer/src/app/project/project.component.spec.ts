@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToolbarEditorRowComponent } from './toolbar-editor-row.component';
+import { ProjectComponent } from './project.component';
 
-describe('ToolbarEditorRowComponent', () => {
-  let component: ToolbarEditorRowComponent;
-  let fixture: ComponentFixture<ToolbarEditorRowComponent>;
+describe('ProjectComponent', () => {
+  let component: ProjectComponent;
+  let fixture: ComponentFixture<ProjectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolbarEditorRowComponent ]
+      declarations: [ ProjectComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ToolbarEditorRowComponent);
+    fixture = TestBed.createComponent(ProjectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -16,9 +16,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@customdoc/common/toolbar-editor": [
-        "libs/common/toolbar-editor/src/index.ts"
-      ],
       "@customdoc/common/split-content": [
         "libs/common/split-content/src/index.ts"
       ],

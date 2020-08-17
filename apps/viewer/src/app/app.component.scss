@@ -1,16 +1,22 @@
 :host {
   display: flex;
+  flex-direction: column;
   height: 100%;
   max-width: 100%;
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 12px;
+    h1 {
+      margin: 0px;
 
-  aside {
-    width: 300px;
-    max-width: 360px;
-    min-width: 260px;
+    }
   }
   main {
-    overflow: auto;
-    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 }
 

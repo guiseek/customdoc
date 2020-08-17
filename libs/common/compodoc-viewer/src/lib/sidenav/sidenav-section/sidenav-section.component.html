@@ -1,7 +1,7 @@
-<a [routerLink]="['/', nav.section]">{{ nav.section }}</a>
+<a [routerLink]="nav.section">{{ nav.section }}</a>
 
 <ul>
   <li *ngFor="let item of nav.items">
-    <a [routerLink]="['/', nav.section, item.id]">{{ item.name }}</a>
+    <a [routerLink]="[nav.section, item.id]">{{ item.name }}</a>
   </li>
 </ul>

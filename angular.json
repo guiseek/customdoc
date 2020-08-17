@@ -121,71 +121,6 @@
         }
       }
     },
-    "common-toolbar-editor": {
-      "projectType": "library",
-      "root": "libs/common/toolbar-editor",
-      "sourceRoot": "libs/common/toolbar-editor/src",
-      "prefix": "toolbar",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/common/toolbar-editor/tsconfig.lib.json",
-            "project": "libs/common/toolbar-editor/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/common/toolbar-editor/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/common/toolbar-editor/tsconfig.lib.json",
-              "libs/common/toolbar-editor/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/toolbar-editor/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/common/toolbar-editor/jest.config.js",
-            "tsConfig": "libs/common/toolbar-editor/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/common/toolbar-editor/src/test-setup.ts"
-          }
-        },
-        "compodoc": {
-          "builder": "@twittwer/compodoc:compodoc",
-          "options": {
-            "tsConfig": "libs/common/toolbar-editor/tsconfig.lib.json",
-            "outputPath": "dist/compodoc/common-toolbar-editor"
-          },
-          "configurations": {
-            "json": {
-              "exportFormat": "json"
-            },
-            "html": {
-              "exportFormat": "html",
-              "workspaceDocs": true,
-              "language": "pt-BR",
-              "theme": "material"
-            }
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
     "common-split-content": {
       "projectType": "library",
       "root": "libs/common/split-content",
@@ -460,6 +395,18 @@
             "tsConfig": "libs/util/formatting/tsconfig.spec.json",
             "passWithNoTests": true
           }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "libs/util/formatting/tsconfig.lib.json",
+            "outputPath": "dist/compodoc/util-formatting"
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            }
+          }
         }
       }
     },
@@ -498,6 +445,18 @@
             "tsConfig": "libs/common/markdown-tool/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "libs/common/markdown-tool/src/test-setup.ts"
+          }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "libs/common/markdown-tool/tsconfig.lib.json",
+            "outputPath": "dist/compodoc/common-markdown-tool"
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            }
           }
         }
       },

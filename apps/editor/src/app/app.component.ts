@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ToolbarEditorConfig } from '@customdoc/common/toolbar-editor';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'editor-root',

@@ -8,6 +8,8 @@ import { CompodocEntry, CompodocSection } from './sidenav.interfaces';
   styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit {
+  @Input() project: CompodocViewer.Project;
+  
   @Output() itemChange = new EventEmitter();
 
   public navigation: CompodocSection[] = [];

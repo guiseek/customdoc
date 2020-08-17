@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ToolbarEditorService } from './toolbar-editor.service';
+import { DocService } from './doc.service';
 
-describe('ToolbarEditorService', () => {
-  let service: ToolbarEditorService;
+describe('DocService', () => {
+  let service: DocService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ToolbarEditorService);
+    service = TestBed.inject(DocService);
   });
 
   it('should be created', () => {

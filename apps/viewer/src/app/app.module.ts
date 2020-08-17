@@ -4,22 +4,31 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CompodocViewerModule } from '@customdoc/common/compodoc-viewer';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
-    path: ':section/:item',
+    path: '',
+    component: HomeComponent,
+  },
+  {
+    path: ':project',
     loadChildren: () =>
-      import('./module/module.module').then((m) => m.ModuleModule),
+      import('./project/project.module').then((m) => m.ProjectModule),
   },
 ];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomeComponent],
   imports: [
+    SharedModule,
     BrowserModule,
     HttpClientModule,
     CompodocViewerModule,
-    RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [],
   bootstrap: [AppComponent],

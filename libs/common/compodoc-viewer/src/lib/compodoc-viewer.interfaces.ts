@@ -1,4 +1,8 @@
 export namespace CompodocViewer {
+  export interface Project {
+    name: string;
+    url: string;
+  }
   export interface Compodoc {
     pipes: any[];
     interfaces: Interface[];

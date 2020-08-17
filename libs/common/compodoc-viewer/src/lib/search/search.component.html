@@ -1,4 +1,6 @@
-<input type="text" [formControl]="searchControl">
+<label aria-label="Busca" aria-labelledby="search">
+  <input id="search" type="text" [formControl]="searchControl">
+</label>
 
 <section *ngFor="let result of filteredDocumentation$ | async">
   <compodoc-search-result [doc]="result"></compodoc-search-result>

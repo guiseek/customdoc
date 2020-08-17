@@ -1,6 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NavigationEnd, Router } from '@angular/router';
+import { CompodocViewer } from '@customdoc/common/compodoc-viewer';
 import { Observable } from 'rxjs';
+import { filter, switchMap } from 'rxjs/operators';
+import { Doc, DocService } from './shared/doc.service';
 
 @Component({
   selector: 'customdoc-root',
@@ -8,18 +12,30 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'viewer';
-  compodoc$: Observable<Object>;
-  doc = '/compodoc/common-compodoc-viewer/documentation.json';
-  constructor(
-    private http: HttpClient
-  ) {}
+  title = 'Custom Doc';
+
+  form = new FormGroup({
+    project: new FormControl('', Validators.required),
+  });
+  get project() { return this.form.get('project'); }
+
+  docs$: Observable<Doc[]>;
+
+  constructor(private doc: DocService, private router: Router) {
+    this.router.events
+      .pipe(
+        filter((nav) => nav instanceof NavigationEnd && !!nav.id),
+        switchMap(({ url }: NavigationEnd) => this.doc.findByPath(url))
+      )
+      .subscribe((project) => this.form.setValue({ project }));
+  }
 
   ngOnInit() {
-    this.compodoc$ = this.http.get(this.doc);
+    this.docs$ = this.doc.getDocs();
   }
-  onChange(item?) {
-    console.log(item);
-    
+  goTo(project: CompodocViewer.Project) {
+    if (project.name) {
+      this.router.navigate([project.name]);
+    }
   }
 }

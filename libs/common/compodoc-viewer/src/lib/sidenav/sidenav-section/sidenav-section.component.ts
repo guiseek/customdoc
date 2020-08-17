@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CompodocSection } from '../sidenav.interfaces';
 
 @Component({
@@ -9,7 +10,7 @@ import { CompodocSection } from '../sidenav.interfaces';
 export class SidenavSectionComponent implements OnInit {
   @Input() nav: CompodocSection;
 
-  constructor() { }
+  constructor(public route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }

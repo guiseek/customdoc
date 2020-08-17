@@ -2,9 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { debounceTime, filter, map, switchMap } from 'rxjs/operators';
-import { compodoc, CompodocResult } from './search.interfaces';
+import { CompodocResult } from './search.interfaces';
 import { clearToSearch } from '@customdoc/util/formatting';
 import { Observable } from 'rxjs';
+import { CompodocViewer } from '../compodoc-viewer.interfaces';
 
 const searchInProperties = [
   'name',
@@ -16,7 +17,11 @@ const searchInProperties = [
   'templateData',
 ];
 
-const searchInValues = (data: compodoc, layer: keyof compodoc, query = '') => {
+const searchInValues = (
+  data: CompodocViewer.Compodoc,
+  layer: keyof CompodocViewer.Compodoc,
+  query = ''
+) => {
   return Object.keys(data).filter((k) =>
     searchInProperties.includes(k)
       ? clearToSearch(data[layer].toString()).indexOf(clearToSearch(query)) > -1
@@ -30,8 +35,9 @@ const searchInValues = (data: compodoc, layer: keyof compodoc, query = '') => {
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
+  @Input() project: CompodocViewer.Project;
   @Input() url: string;
-  @Input() documentation$: Observable<compodoc>;
+  @Input() documentation$: Observable<CompodocViewer.Compodoc>;
 
   filteredDocumentation$: Observable<CompodocResult[]>;
 
@@ -40,8 +46,8 @@ export class SearchComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    if (!this.url) {
-      throw new Error('Informe a URL da documentação (JSON).');
+    if (!this.project.url || !this.project.name) {
+      throw new Error('Informe o project da documentação.');
     }
     this.listenCompodocSearch();
   }
@@ -49,7 +55,6 @@ export class SearchComponent implements OnInit {
   listenCompodocSearch() {
     this.filteredDocumentation$ = this.searchControl.valueChanges.pipe(
       debounceTime(300),
-      // startWith<string>(''),
       filter((v) => v && (v as string).length > 1),
       switchMap((value) => this.filterDocumentation(value as string))
     );
@@ -57,45 +62,42 @@ export class SearchComponent implements OnInit {
   filterDocumentation(rawQuery = ''): Observable<CompodocResult[]> {
     const query = clearToSearch(rawQuery);
 
-    return this.http.get<compodoc>(this.url).pipe(
+    return this.http.get<CompodocViewer.Compodoc>(this.project.url).pipe(
       map((documentation) => {
-
+        // Podemos filtrar mais de 1 projeto futuramente
         const results = [];
 
-        const interfaces = documentation.interfaces.filter(
-          (d) => clearToSearch(d.name).indexOf(query) > -1
-        );
-        if (interfaces) {
-          results.push({ type: 'interfaces', results: interfaces });
-        }
+        const search = ({ name }) => clearToSearch(name).indexOf(query) > -1;
 
-        const components = documentation.components.filter(
-          (d) => clearToSearch(d.name).indexOf(query) > -1
-        );
-        if (components) {
-          results.push({ type: 'components', results: components });
-        }
+        results.push({
+          type: 'interfaces',
+          results: documentation.interfaces.filter(search),
+        });
 
-        const directives = documentation.directives.filter(
-          (d) => clearToSearch(d.name).indexOf(query) > -1
-        );
-        if (directives) {
-          results.push({ type: 'directives', results: components });
-        }
+        results.push({
+          type: 'components',
+          results: documentation.components.filter(search),
+        });
 
-        const modules = documentation.modules.filter(
-          (d) => clearToSearch(d.name).indexOf(query) > -1
-        );
-        if (modules) {
-          results.push({ type: 'modules', results: components });
-        }
+        results.push({
+          type: 'directives',
+          results: documentation.directives.filter(search),
+        });
 
-        const pipes = documentation.pipes.filter(
-          (d) => clearToSearch(d.name).indexOf(query) > -1
-        );
-        if (pipes) {
-          results.push({ type: 'pipes', results: components });
-        }
+        results.push({
+          type: 'injectables',
+          results: documentation.injectables.filter(search),
+        });
+
+        results.push({
+          type: 'modules',
+          results: documentation.modules.filter(search),
+        });
+
+        results.push({
+          type: 'pipes',
+          results: documentation.pipes.filter(search),
+        });
 
         return results;
       })
