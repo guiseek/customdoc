@@ -2,7 +2,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostBinding,
   OnInit,
   Output,
   Renderer2,
@@ -13,8 +12,7 @@ import { MarkdownService } from '../markdown.service';
 
 @Component({
   selector: 'markdown-editor',
-  template: '<page markdownToolbarTrigger></page>',
-  // templateUrl: './markdown-editor.component.html',
+  templateUrl: './markdown-editor.component.html',
   styleUrls: ['./markdown-editor.component.scss'],
 })
 export class MarkdownEditorComponent implements OnInit {
@@ -27,7 +25,7 @@ export class MarkdownEditorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const markdown = this.elRef.nativeElement.querySelector('page');
+    const markdown = this.elRef.nativeElement.querySelector('content-page');
     this.renderer.listen(markdown, 'input', (evt: HTMLEventTarget) => {
       this.markdownChange.emit(this.service.fromTarget(evt.target));
     });

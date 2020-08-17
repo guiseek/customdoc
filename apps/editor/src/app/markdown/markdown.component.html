@@ -1,12 +1,14 @@
 <div class="container">
   <split-content direction="horizontal" unit="percent">
     <div class="editor" split-content-area>
+
       <markdown-editor (markdownChange)="onChange($event)"></markdown-editor>
 
-      <!-- <article id="markdown" contenteditable></article> -->
     </div>
     <div class="preview" split-content-area>
+
       <markdown-preview [markdownContent]="markdownContent"></markdown-preview>
+
     </div>
   </split-content>
 </div>

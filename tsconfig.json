@@ -25,7 +25,9 @@
       "@customdoc/util/formatting": ["libs/util/formatting/src/index.ts"],
       "@customdoc/common/markdown-tool": [
         "libs/common/markdown-tool/src/index.ts"
-      ]
+      ],
+      "@customdoc/common/content": ["libs/common/content/src/index.ts"],
+      "@customdoc/util/content": ["libs/util/content/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

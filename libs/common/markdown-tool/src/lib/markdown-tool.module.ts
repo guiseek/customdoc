@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ContentModule } from '@customdoc/common/content';
 import { PortalModule } from '@angular/cdk/portal';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MarkdownContentComponent } from './markdown-content/markdown-content.component';
@@ -8,10 +9,9 @@ import { MarkdownPreviewComponent } from './markdown-preview/markdown-preview.co
 import { MarkdownToolbarComponent } from './markdown-toolbar/markdown-toolbar.component';
 import { MarkdownToolbarContainer } from './markdown-toolbar/markdown-toolbar.container';
 import { MarkdownToolbarTriggerDirective } from './markdown-toolbar/markdown-toolbar-trigger.directive';
-import { PageComponent } from './page.component';
 
 @NgModule({
-  imports: [CommonModule, PortalModule, OverlayModule],
+  imports: [CommonModule, ContentModule, PortalModule, OverlayModule],
   declarations: [
     MarkdownContentComponent,
     MarkdownEditorComponent,
@@ -19,7 +19,6 @@ import { PageComponent } from './page.component';
     MarkdownToolbarComponent,
     MarkdownToolbarContainer,
     MarkdownToolbarTriggerDirective,
-    PageComponent,
   ],
   exports: [
     MarkdownContentComponent,
@@ -28,7 +27,6 @@ import { PageComponent } from './page.component';
     MarkdownToolbarComponent,
     MarkdownToolbarContainer,
     MarkdownToolbarTriggerDirective,
-    PageComponent,
   ],
 })
 export class MarkdownToolModule {}
