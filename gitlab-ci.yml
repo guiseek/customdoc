@@ -1,0 +1,34 @@
+image: node:latest
+
+stages:
+  - build
+
+build-foo-package:
+  stage: build
+  variables:
+    PACKAGE: "Foo"
+  script:
+    - cd src/components/Foo
+    - echo "Building $PACKAGE"
+    - npm publish
+  only:
+    refs:
+      - master
+      - merge_requests
+    changes:
+      - "src/components/Foo/**/*"
+
+build-my-project-package:
+  stage: build
+  variables:
+    PACKAGE: "MyPackage"
+  script:
+    - echo "Building $PACKAGE"
+    - npm publish
+  only:
+    refs:
+      - master
+      - merge_requests
+  except:
+    changes:
+      - "src/components/Foo/**/*"

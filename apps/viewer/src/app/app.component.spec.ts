@@ -1,12 +1,18 @@
 import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AppComponent } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DocService } from './shared/doc.service';
+import { DocProjectGuard } from './shared/doc-project.guard';
+import { environment } from '../environments/environment';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [HttpClientTestingModule, ReactiveFormsModule, RouterTestingModule],
       declarations: [AppComponent],
+      providers: [DocService, DocProjectGuard, { provide: 'docs', useValue: environment.docs }]
     }).compileComponents();
   }));
 
@@ -16,18 +22,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'viewer'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('viewer');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain(
-      'Welcome to viewer!'
-    );
-  });
 });

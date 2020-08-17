@@ -1,22 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { PropertyClassComponent } from './property-class.component';
+import { createMockFor } from '@customdoc/util/testing';
+import { PropertyClassComponent } from './index';
 
 describe('PropertyClassComponent', () => {
   let component: PropertyClassComponent;
-  let fixture: ComponentFixture<PropertyClassComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PropertyClassComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PropertyClassComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = createMockFor(PropertyClassComponent);
   });
 
   it('should create', () => {

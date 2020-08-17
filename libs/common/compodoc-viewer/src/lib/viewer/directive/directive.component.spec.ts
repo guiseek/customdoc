@@ -1,22 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { DirectiveComponent } from './directive.component';
+import { createMockFor } from '@customdoc/util/testing';
+import { DirectiveComponent } from './index';
 
 describe('DirectiveComponent', () => {
   let component: DirectiveComponent;
-  let fixture: ComponentFixture<DirectiveComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DirectiveComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DirectiveComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = createMockFor(DirectiveComponent);
   });
 
   it('should create', () => {

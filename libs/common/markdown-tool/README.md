@@ -121,7 +121,7 @@ module.exports = createReleaseConfigWithScopeFilter({
   ]
 }
 ```
-
+Volte para [CONTRIBUIR](/CONTRIBUTING.md)
 ---
 
 This library was generated with [Nx](https://nx.dev).

@@ -1,22 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { createMockFor } from '@customdoc/util/testing';
 import { SearchComponent } from './search.component';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
-  let fixture: ComponentFixture<SearchComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SearchComponent ]
-    })
-    .compileComponents();
-  }));
-
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = createMockFor(SearchComponent)
   });
 
   it('should create', () => {

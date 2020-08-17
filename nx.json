@@ -47,6 +47,9 @@
     },
     "util-content": {
       "tags": []
+    },
+    "util-testing": {
+      "tags": []
     }
   }
 }

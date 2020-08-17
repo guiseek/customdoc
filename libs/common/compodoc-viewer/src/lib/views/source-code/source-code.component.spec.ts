@@ -1,22 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SourceCodeComponent } from './source-code.component';
+import { createMockFor } from '@customdoc/util/testing';
+import { SourceCodeComponent } from './index';
 
 describe('SourceCodeComponent', () => {
   let component: SourceCodeComponent;
-  let fixture: ComponentFixture<SourceCodeComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SourceCodeComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SourceCodeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = createMockFor(SourceCodeComponent);
   });
 
   it('should create', () => {

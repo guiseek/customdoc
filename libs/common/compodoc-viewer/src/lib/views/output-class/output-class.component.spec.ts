@@ -1,22 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { OutputClassComponent } from './output-class.component';
+import { createMockFor } from '@customdoc/util/testing';
+import { OutputClassComponent } from './index';
 
 describe('OutputClassComponent', () => {
   let component: OutputClassComponent;
-  let fixture: ComponentFixture<OutputClassComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ OutputClassComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OutputClassComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = createMockFor(OutputClassComponent);
   });
 
   it('should create', () => {

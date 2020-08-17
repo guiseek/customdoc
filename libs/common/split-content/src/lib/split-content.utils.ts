@@ -58,7 +58,7 @@ export function isUserSizesValid(
   // Todos os tamanhos não podem ser nulos e o total deve ser 100
   if (unit === 'percent') {
     const total = sizes.reduce(
-      (total, s) => (s !== null ? total + s : total),
+      (t, s) => (s !== null ? t + s : t),
       0
     );
     return sizes.every((s) => s !== null) && total > 99.9 && total < 100.1;

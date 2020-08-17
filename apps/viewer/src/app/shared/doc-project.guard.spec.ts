@@ -1,13 +1,11 @@
-import { TestBed } from '@angular/core/testing';
-
+import { createMockFor } from '@customdoc/util/testing';
 import { DocProjectGuard } from './doc-project.guard';
 
 describe('DocProjectGuard', () => {
   let guard: DocProjectGuard;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    guard = TestBed.inject(DocProjectGuard);
+    guard = createMockFor(DocProjectGuard);
   });
 
   it('should be created', () => {

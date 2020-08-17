@@ -1,22 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { InputClassComponent } from './input-class.component';
+import { createMockFor } from '@customdoc/util/testing';
+import { InputClassComponent } from './index';
 
 describe('InputClassComponent', () => {
   let component: InputClassComponent;
-  let fixture: ComponentFixture<InputClassComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ InputClassComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InputClassComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = createMockFor(InputClassComponent);
   });
 
   it('should create', () => {

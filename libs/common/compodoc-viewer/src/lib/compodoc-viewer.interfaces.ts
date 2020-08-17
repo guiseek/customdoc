@@ -234,7 +234,9 @@ export namespace CompodocViewer {
     Function = 'function',
   }
 
-  export interface Grouped {}
+  export interface Grouped {
+    foo: 'bar'
+  }
 
   export interface GroupedFunctions {
     'src/lib/split-content.utils.ts': Function[];

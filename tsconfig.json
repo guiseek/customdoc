@@ -25,7 +25,8 @@
       "@customdoc/common/markdown-tool": [
         "libs/common/markdown-tool/src/index.ts"
       ],
-      "@customdoc/util/content": ["libs/util/content/src/index.ts"]
+      "@customdoc/util/content": ["libs/util/content/src/index.ts"],
+      "@customdoc/util/testing": ["libs/util/testing/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

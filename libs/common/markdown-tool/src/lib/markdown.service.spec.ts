@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
-
+import { createMockFor } from '@customdoc/util/testing';
 import { MarkdownService } from './markdown.service';
 
 describe('MarkdownService', () => {
-  let service: MarkdownService;
+  let directive: MarkdownService;
+  function createService({
+    splitContent = createMockFor(MarkdownService),
+  } = {}) {
+    return splitContent;
+  }
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(MarkdownService);
-  });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('should create an instance', () => {
+    directive = createService();
+    expect(directive).toBeTruthy();
   });
 });

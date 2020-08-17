@@ -1,22 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { MethodClassComponent } from './method-class.component';
+import { createMockFor } from '@customdoc/util/testing';
+import { MethodClassComponent } from './index';
 
 describe('MethodClassComponent', () => {
   let component: MethodClassComponent;
-  let fixture: ComponentFixture<MethodClassComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ MethodClassComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MethodClassComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = createMockFor(MethodClassComponent);
   });
 
   it('should create', () => {

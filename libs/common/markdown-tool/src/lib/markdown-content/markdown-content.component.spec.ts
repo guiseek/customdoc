@@ -1,25 +1,16 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { createMockFor } from '@customdoc/util/testing';
 import { MarkdownContentComponent } from './markdown-content.component';
 
 describe('MarkdownContentComponent', () => {
   let component: MarkdownContentComponent;
-  let fixture: ComponentFixture<MarkdownContentComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ MarkdownContentComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(MarkdownContentComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  function createComponent({
+    mock = createMockFor(MarkdownContentComponent),
+  } = {}) {
+    return mock;
+  }
 
   it('should create', () => {
+    component = createComponent();
     expect(component).toBeTruthy();
   });
 });
