@@ -1,1 +1,1 @@
-export * from './lib/markdown-tool.module';
+export * from './lib/index';

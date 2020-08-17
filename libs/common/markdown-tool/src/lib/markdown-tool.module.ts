@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContentModule } from '@customdoc/common/content';
 import { PortalModule } from '@angular/cdk/portal';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MarkdownContentComponent } from './markdown-content/markdown-content.component';
@@ -11,7 +10,7 @@ import { MarkdownToolbarContainer } from './markdown-toolbar/markdown-toolbar.co
 import { MarkdownToolbarTriggerDirective } from './markdown-toolbar/markdown-toolbar-trigger.directive';
 
 @NgModule({
-  imports: [CommonModule, ContentModule, PortalModule, OverlayModule],
+  imports: [CommonModule, PortalModule, OverlayModule],
   declarations: [
     MarkdownContentComponent,
     MarkdownEditorComponent,

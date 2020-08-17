@@ -25,7 +25,7 @@ export class MarkdownEditorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const markdown = this.elRef.nativeElement.querySelector('content-page');
+    const markdown = this.elRef.nativeElement.querySelector('markdown-content');
     this.renderer.listen(markdown, 'input', (evt: HTMLEventTarget) => {
       this.markdownChange.emit(this.service.fromTarget(evt.target));
     });

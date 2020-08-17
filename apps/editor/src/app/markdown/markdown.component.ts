@@ -1,12 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { parse, MarkedOptions } from 'marked';
-import { saveContent } from '@customdoc/util/content';
-
-type HTMLInputEvent = InputEvent & {
-  target: HTMLElement;
-};
+import { Component, OnInit } from '@angular/core';
+import { SafeHtml } from '@angular/platform-browser';
+import { MarkedOptions } from 'marked';
+// import { saveContent } from '@customdoc/util/content';
 
 const contentOptions: MarkedOptions = {
   gfm: true,

@@ -1,0 +1,13 @@
+:host {
+  flex: 1;
+  background: white;
+  margin: 1.5cm;
+  padding: 2cm;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+@media print {
+  body, content-page {
+    margin: 0;
+    box-shadow: 0;
+  }
+}

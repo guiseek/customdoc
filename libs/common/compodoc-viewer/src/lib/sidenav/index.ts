@@ -1,2 +1,2 @@
 export * from './sidenav.component';
-export * from './sidenav-section';
+export * from './sidenav-section/index';

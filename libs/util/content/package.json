@@ -1,5 +1,5 @@
 {
-  "name": "@customdoc/common-content",
+  "name": "@customdoc/util-content",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^9.1.12",

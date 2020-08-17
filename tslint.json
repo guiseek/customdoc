@@ -57,7 +57,7 @@
       true,
       {
         "enforceBuildableLibDependency": true,
-        "allow": ["@customdoc/util/formatting"],
+        "allow": [],
         "depConstraints": [
           {
             "sourceTag": "*",
