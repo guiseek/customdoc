@@ -1,15 +1,14 @@
-import { Overlay } from '@angular/cdk/overlay';
-import { ElementRef, Injectable, Injector } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { MarkedOptions, parse } from 'marked';
-import { MarkdownToolbarRef } from './markdown-toolbar/markdown-toolbar-ref';
-import {
-  markdownToolbarConfig,
-  markdownToolbarPositions,
-} from './markdown-toolbar/markdown-toolbar-config';
+import { Overlay } from '@angular/cdk/overlay';
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ElementRef, Injectable, Injector } from '@angular/core';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
+import { MarkdownToolbarRef } from './markdown-toolbar/markdown-toolbar-ref';
+import { markdownToolbarConfig, markdownToolbarPositions} from './markdown-toolbar/markdown-toolbar-config';
 import { MarkdownToolbarComponent } from './markdown-toolbar/markdown-toolbar.component';
 import { MarkdownToolbarContainer } from './markdown-toolbar/markdown-toolbar.container';
+import { saveFile } from './utils';
 
 const options: MarkedOptions = {
   gfm: true,
@@ -18,15 +17,34 @@ const options: MarkedOptions = {
     console.log(code, lang);
   },
 };
+
 @Injectable({
   providedIn: 'root',
 })
 export class MarkdownService {
   constructor(
+    private http: HttpClient,
     private overlay: Overlay,
     private injector: Injector,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
   ) {}
+
+  fromTarget({ innerText }: HTMLElement) {
+    return this.parse(innerText);
+  }
+
+  private parse(content: string) {
+    const markdown = parse(content, options);
+    return this.sanitizer.bypassSecurityTrustHtml(markdown);
+  }
+
+  save(content: string) {
+    return saveFile(content, 'README.md');
+  }
+  read(markdownPath: string) {
+    const headers = { 'Accept': 'text/plain', 'Content-Type': 'text/plain' };
+    return this.http.get(markdownPath, { headers, responseType: 'text' })
+  }
 
   openToolbar(target: ElementRef | HTMLElement) {
     const position = this.overlay
@@ -72,14 +90,5 @@ export class MarkdownService {
       )
     );
     return markdownToolbarRef;
-  }
-
-  fromTarget({ innerText }: HTMLElement) {
-    return this.parse(innerText);
-  }
-
-  private parse(content: string) {
-    const markdown = parse(content, options);
-    return this.sanitizer.bypassSecurityTrustHtml(markdown);
   }
 }

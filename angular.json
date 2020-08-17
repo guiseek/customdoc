@@ -364,49 +364,18 @@
               "exportFormat": "json"
             }
           }
+        },
+        "release": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [{ "command": "npx semantic-release" }],
+            "cwd": "libs/common/compodoc-viewer"
+          }
         }
       },
       "schematics": {
         "@nrwl/angular:component": {
           "style": "scss"
-        }
-      }
-    },
-    "util-formatting": {
-      "root": "libs/util/formatting",
-      "sourceRoot": "libs/util/formatting/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/util/formatting/tsconfig.lib.json",
-              "libs/util/formatting/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/util/formatting/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/util/formatting/jest.config.js",
-            "tsConfig": "libs/util/formatting/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        },
-        "compodoc": {
-          "builder": "@twittwer/compodoc:compodoc",
-          "options": {
-            "tsConfig": "libs/util/formatting/tsconfig.lib.json",
-            "outputPath": "dist/compodoc/util-formatting"
-          },
-          "configurations": {
-            "json": {
-              "exportFormat": "json"
-            }
-          }
         }
       }
     },
@@ -458,61 +427,12 @@
               "exportFormat": "json"
             }
           }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "common-content": {
-      "projectType": "library",
-      "root": "libs/common/content",
-      "sourceRoot": "libs/common/content/src",
-      "prefix": "customdoc",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/common/content/tsconfig.lib.json",
-            "project": "libs/common/content/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/common/content/tsconfig.lib.prod.json"
-            }
-          }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+        "release": {
+          "builder": "@nrwl/workspace:run-commands",
           "options": {
-            "tsConfig": [
-              "libs/common/content/tsconfig.lib.json",
-              "libs/common/content/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/common/content/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/common/content/jest.config.js",
-            "tsConfig": "libs/common/content/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/common/content/src/test-setup.ts"
-          }
-        },
-        "compodoc": {
-          "builder": "@twittwer/compodoc:compodoc",
-          "options": {
-            "tsConfig": "libs/common/content/tsconfig.lib.json",
-            "outputPath": "dist/compodoc/common-content"
-          },
-          "configurations": {
-            "json": {
-              "exportFormat": "json"
-            }
+            "commands": [{ "command": "npx semantic-release" }],
+            "cwd": "libs/common/markdown-tool"
           }
         }
       },
@@ -523,11 +443,23 @@
       }
     },
     "util-content": {
+      "projectType": "library",
       "root": "libs/util/content",
       "sourceRoot": "libs/util/content/src",
-      "projectType": "library",
-      "schematics": {},
+      "prefix": "customdoc",
       "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/util/content/tsconfig.lib.json",
+            "project": "libs/util/content/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/util/content/tsconfig.lib.prod.json"
+            }
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -543,8 +475,14 @@
           "options": {
             "jestConfig": "libs/util/content/jest.config.js",
             "tsConfig": "libs/util/content/tsconfig.spec.json",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "setupFile": "libs/util/content/src/test-setup.ts"
           }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
         }
       }
     }
