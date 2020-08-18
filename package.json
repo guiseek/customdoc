@@ -1,6 +1,6 @@
 {
   "name": "customdoc",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "license": "MIT",
   "author": {
     "name": "Guilherme Siquinelli",
@@ -37,7 +37,8 @@
     "help": "nx help",
     "prerelease": "nx affected:build --all",
     "release": "nx affected --target release --all",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "semantic-release": "semantic-release"
   },
   "husky": {
     "hooks": {

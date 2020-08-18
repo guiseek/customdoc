@@ -1,34 +1,74 @@
-image: node:latest
-
 stages:
-  - build
+  - stage:release
 
-build-foo-package:
-  stage: build
-  variables:
-    PACKAGE: "Foo"
-  script:
-    - cd src/components/Foo
-    - echo "Building $PACKAGE"
-    - npm publish
-  only:
-    refs:
-      - master
-      - merge_requests
-    changes:
-      - "src/components/Foo/**/*"
+# This version is important! See https://github.com/semantic-release/gitlab/issues/139
+image: node:12.14.1
 
-build-my-project-package:
-  stage: build
-  variables:
-    PACKAGE: "MyPackage"
-  script:
-    - echo "Building $PACKAGE"
-    - npm publish
+# This folder is cached between builds
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+cache:
+  paths:
+    - node_modules/
+
+# This selects only refs matching master
+.only_semantic_release: &only_semantic_release
   only:
-    refs:
-      - master
-      - merge_requests
-  except:
-    changes:
-      - "src/components/Foo/**/*"
+    - master
+
+step:release:semantic_release:
+  <<: *only_semantic_release
+  when: manual
+  stage: stage:release
+  before_script:
+    - git config --global user.name "${GITLAB_USER_NAME}"
+    - git config --global user.email "${GITLAB_USER_EMAIL}"
+    - echo "$GITLAB_USER_EMAIL"
+    - echo "$GITLAB_USER_NAME"
+    - echo "$CI_GIT_TOKEN"
+  script:
+    - echo Install
+    - npm ci
+    - echo Format
+    - npm run format:check
+    - echo Lint
+    - npm run nx -- workspace-lint
+    - npm run affected:lint -- --all
+    - echo Test
+    - npm run affected:test -- --all
+    - Release
+    - npm run release
+    
+# image: node:latest
+
+# stages:
+#   - build
+
+# build-foo-package:
+#   stage: build
+#   variables:
+#     PACKAGE: "Foo"
+#   script:
+#     - cd src/components/Foo
+#     - echo "Building $PACKAGE"
+#     - npm publish
+#   only:
+#     refs:
+#       - master
+#       - merge_requests
+#     changes:
+#       - "src/components/Foo/**/*"
+
+# build-my-project-package:
+#   stage: build
+#   variables:
+#     PACKAGE: "MyPackage"
+#   script:
+#     - echo "Building $PACKAGE"
+#     - npm publish
+#   only:
+#     refs:
+#       - master
+#       - merge_requests
+#   except:
+#     changes:
+#       - "src/components/Foo/**/*"
