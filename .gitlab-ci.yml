@@ -28,11 +28,9 @@ step:release:semantic_release:
   script:
     - echo Install
     - npm ci
-    - echo Format
-    - npm run format:check
-    - echo Lint
-    - npm run nx -- workspace-lint
-    - npm run affected:lint -- --all
+    # - echo Lint
+    # - npm run nx -- workspace-lint
+    # - npm run affected:lint -- --all
     - echo Test
     - npm run affected:test -- --all
     - Release
