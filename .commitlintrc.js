@@ -27,7 +27,8 @@ module.exports = {
       // prettier-ignore
       [
         'compodoc',
-        'markdown'
+        'markdown',
+        'project'
       ],
     ],
   },
