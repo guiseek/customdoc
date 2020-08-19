@@ -8,6 +8,7 @@ import { CompodocSection } from '../sidenav.interfaces';
   styleUrls: ['./sidenav-section.component.scss']
 })
 export class SidenavSectionComponent implements OnInit {
+  @Input() prefix = '';
   @Input() nav: CompodocSection;
 
   constructor(public route: ActivatedRoute) { }

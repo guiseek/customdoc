@@ -1,5 +1,8 @@
-<compodoc-sidenav [documentation]="compodoc$ | async"></compodoc-sidenav>
-
 <ng-container *ngIf="project$ | async as project">
+  <compodoc-sidenav
+    [prefix]="'/project/' + project.name"
+    [documentation]="compodoc$ | async"
+  ></compodoc-sidenav>
+
   <compodoc-search [project]="project"></compodoc-search>
 </ng-container>

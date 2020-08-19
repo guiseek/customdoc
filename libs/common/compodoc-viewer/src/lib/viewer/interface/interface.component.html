@@ -32,7 +32,7 @@
 
 <ng-container *ngIf="doc.sourceCode">
   <h4>Código</h4>
-  <compodoc-source-code [code]="doc.sourceCode"></compodoc-source-code>
+  <pre compodoc-source-code [code]="doc.sourceCode"></pre>
 </ng-container>
 
 <code>{{ doc | json }}</code>

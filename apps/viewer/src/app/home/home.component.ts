@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CompodocViewer, CompodocViewerService } from '@customdoc/common/compodoc-viewer';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'customdoc-home',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  docs$: Observable<CompodocViewer.Project[]>;
+  constructor(private compodoc: CompodocViewerService) { }
 
   ngOnInit(): void {
+    this.docs$ = this.compodoc.findDocs();
   }
 
 }

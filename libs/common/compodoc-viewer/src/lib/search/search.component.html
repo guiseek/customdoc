@@ -1,5 +1,11 @@
-<label aria-label="Busca" aria-labelledby="search">
-  <input id="search" type="text" [formControl]="searchControl">
+<label aria-label="Busca" aria-labelledby="compodoc-search">
+  <input list="sections" id="compodoc-search" name="compodoc-search" type="text" [formControl]="searchControl">
+  <datalist id="sections">
+    <option value="interface">
+    <option value="component">
+    <option value="directive">
+    <option value="module">
+  </datalist>
 </label>
 
 <section *ngFor="let result of filteredDocumentation$ | async">

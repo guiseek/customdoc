@@ -7,9 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { MarkdownModule } from './markdown/markdown.module';
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ProjectComponent],
   imports: [
     FormsModule,
     BrowserModule,

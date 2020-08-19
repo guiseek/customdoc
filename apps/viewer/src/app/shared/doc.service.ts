@@ -28,6 +28,6 @@ export class DocService {
     return this.http.get<CompodocViewer.Compodoc>(url);
   }
   private normalizeName(value: string) {
-     return value.split('/')[1];
+    return value.split('/')[2];
   }
 }
