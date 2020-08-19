@@ -5,7 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ElementRef, Injectable, Injector } from '@angular/core';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
 import { MarkdownToolbarRef } from './markdown-toolbar/markdown-toolbar-ref';
-import { markdownToolbarConfig, markdownToolbarPositions} from './markdown-toolbar/markdown-toolbar-config';
+import { getMarkdownToolbarPositions, markdownToolbarConfig, markdownToolbarPositions} from './markdown-toolbar/markdown-toolbar-config';
 import { MarkdownToolbarComponent } from './markdown-toolbar/markdown-toolbar.component';
 import { MarkdownToolbarContainer } from './markdown-toolbar/markdown-toolbar.container';
 import { saveFile } from './utils';
@@ -46,18 +46,22 @@ export class MarkdownService {
     return this.http.get(markdownPath, { headers, responseType: 'text' })
   }
 
-  openToolbar(target: ElementRef | HTMLElement) {
+  openToolbar(target: HTMLElement, config = markdownToolbarConfig) {
+    config.target = target;
+    const positions = getMarkdownToolbarPositions(
+      config.arrowOffset, config. arrowSize / 2
+    );
     const position = this.overlay
       .position()
       .flexibleConnectedTo(target)
-      .withPush(false)
+      .withPush(true)
       .withFlexibleDimensions(false)
-      .withPositions(markdownToolbarPositions);
+      .withPositions(positions);
 
     const scroll = this.overlay.scrollStrategies.reposition();
 
     const overlayRef = this.overlay.create({
-      ...markdownToolbarConfig,
+      ...config,
       positionStrategy: position,
       scrollStrategy: scroll,
     });

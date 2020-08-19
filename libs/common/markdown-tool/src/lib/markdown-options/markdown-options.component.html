@@ -1,0 +1,116 @@
+<div class="markdown-toolbar-set">
+  <button
+    type="button"
+    title="Undo"
+    class="markdown-button"
+    (click)="triggerCommand('undo')"
+    tabindex="-1"
+  >
+    <i class="fa fa-undo"></i>
+  </button>
+  <button
+    type="button"
+    title="Redo"
+    class="markdown-button"
+    (click)="triggerCommand('redo')"
+    tabindex="-1"
+  >
+    <i class="fa fa-repeat"></i>
+  </button>
+</div>
+<div class="markdown-toolbar-set">
+  <button
+    [id]="'bold-' + id"
+    type="button"
+    title="Bold"
+    class="markdown-button"
+    (click)="triggerCommand('bold')"
+    tabindex="-1"
+  >
+    <i class="fa fa-bold"></i>
+  </button>
+  <button
+    [id]="'italic-' + id"
+    type="button"
+    title="Italic"
+    class="markdown-button"
+    (click)="triggerCommand('italic')"
+    tabindex="-1"
+  >
+    <i class="fa fa-italic"></i>
+  </button>
+</div>
+<div class="markdown-toolbar-set">
+  <button
+    [id]="'h1-' + id"
+    type="button"
+    title="Header 1"
+    class="markdown-button"
+    (click)="triggerCommand('h1')"
+    tabindex="-1"
+  >
+    H1
+  </button>
+  <button
+    [id]="'h2-' + id"
+    type="button"
+    title="Header 2"
+    class="markdown-button"
+    (click)="triggerCommand('h2')"
+    tabindex="-1"
+  >
+    H2
+  </button>
+  <button
+    [id]="'h3-' + id"
+    type="button"
+    title="Header 3"
+    class="markdown-button"
+    (click)="triggerCommand('h3')"
+    tabindex="-1"
+  >
+    H3
+  </button>
+  <button
+    [id]="'h4-' + id"
+    type="button"
+    title="Header 4"
+    class="markdown-button"
+    (click)="triggerCommand('h4')"
+    tabindex="-1"
+  >
+    H4
+  </button>
+  <button
+    [id]="'h5-' + id"
+    type="button"
+    title="Header 5"
+    class="markdown-button"
+    (click)="triggerCommand('h5')"
+    tabindex="-1"
+  >
+    H5
+  </button>
+</div>
+<div class="markdown-toolbar-set">
+  <button
+    [id]="'insertUnorderedList-' + id"
+    type="button"
+    title="Unordered List"
+    class="markdown-button"
+    (click)="triggerCommand('insertUnorderedList')"
+    tabindex="-1"
+  >
+    <i class="fa fa-list-ul"></i>
+  </button>
+  <button
+    [id]="'insertOrderedList-' + id"
+    type="button"
+    title="Ordered List"
+    class="markdown-button"
+    (click)="triggerCommand('insertOrderedList')"
+    tabindex="-1"
+  >
+    <i class="fa fa-list-ol"></i>
+  </button>
+</div>
