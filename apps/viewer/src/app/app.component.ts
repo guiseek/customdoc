@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
-import { CompodocViewer } from '@customdoc/common/compodoc-viewer';
+import { CompodocViewer, CompodocViewerService } from '@customdoc/common/compodoc-viewer';
 import { Observable } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
 import { Doc, DocService } from './shared/doc.service';
@@ -21,21 +21,30 @@ export class AppComponent implements OnInit {
 
   docs$: Observable<Doc[]>;
 
-  constructor(private doc: DocService, private router: Router) {
+  constructor(
+    private doc: DocService,
+    private router: Router,
+    private compodoc: CompodocViewerService
+  ) {
+    this.compodoc.currentProject$.subscribe(console.log)
     this.router.events
       .pipe(
         filter((nav) => nav instanceof NavigationEnd && !!nav.id),
         switchMap(({ url }: NavigationEnd) => this.doc.findByPath(url))
       )
-      .subscribe((project) => this.form.setValue({ project }));
+      .subscribe((project) => this.patchProject(project));
   }
 
   ngOnInit() {
     this.docs$ = this.doc.getDocs();
   }
+  patchProject(project: CompodocViewer.Project) {
+    this.form.patchValue({ project });
+    this.compodoc.setProject(project);
+  }
   goTo(project: CompodocViewer.Project) {
     if (project.name) {
-      this.router.navigate([project.name]);
+      this.router.navigate(['project', project.name]);
     }
   }
 }
