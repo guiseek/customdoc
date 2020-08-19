@@ -87,9 +87,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/editor/jest.config.js",
-            "tsConfig": "apps/editor/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/editor/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -153,9 +151,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/common/split-content/jest.config.js",
-            "tsConfig": "libs/common/split-content/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/common/split-content/src/test-setup.ts"
+            "passWithNoTests": true
           }
         },
         "compodoc": {
@@ -215,7 +211,10 @@
               }
             ],
             "styles": ["apps/viewer/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard"
+            ]
           },
           "configurations": {
             "production": {
@@ -279,9 +278,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/viewer/jest.config.js",
-            "tsConfig": "apps/viewer/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/viewer/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -348,9 +345,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/common/compodoc-viewer/jest.config.js",
-            "tsConfig": "libs/common/compodoc-viewer/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/common/compodoc-viewer/src/test-setup.ts"
+            "passWithNoTests": true
           }
         },
         "compodoc": {
@@ -415,9 +410,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/common/markdown-tool/jest.config.js",
-            "tsConfig": "libs/common/markdown-tool/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/common/markdown-tool/src/test-setup.ts"
+            "passWithNoTests": true
           }
         },
         "compodoc": {
@@ -482,9 +475,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/util/content/jest.config.js",
-            "tsConfig": "libs/util/content/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/util/content/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -514,7 +505,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/util/testing/jest.config.js",
-            "tsConfig": "libs/util/testing/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
