@@ -9,6 +9,8 @@ import { MarkdownPreviewComponent } from './markdown-preview/markdown-preview.co
 import { MarkdownToolbarComponent } from './markdown-toolbar/markdown-toolbar.component';
 import { MarkdownToolbarContainer } from './markdown-toolbar/markdown-toolbar.container';
 import { MarkdownToolbarTriggerDirective } from './markdown-toolbar/markdown-toolbar-trigger.directive';
+import { MarkdownOptionsComponent } from './markdown-options/markdown-options.component';
+import { MarkdownToolbarArrowDirective } from './markdown-toolbar/markdown-toolbar-arrow.directive';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule, PortalModule, OverlayModule],
@@ -19,6 +21,8 @@ import { MarkdownToolbarTriggerDirective } from './markdown-toolbar/markdown-too
     MarkdownToolbarComponent,
     MarkdownToolbarContainer,
     MarkdownToolbarTriggerDirective,
+    MarkdownOptionsComponent,
+    MarkdownToolbarArrowDirective,
   ],
   exports: [
     MarkdownContentComponent,
@@ -27,6 +31,8 @@ import { MarkdownToolbarTriggerDirective } from './markdown-toolbar/markdown-too
     MarkdownToolbarComponent,
     MarkdownToolbarContainer,
     MarkdownToolbarTriggerDirective,
+    MarkdownOptionsComponent,
+    MarkdownToolbarArrowDirective,
   ],
 })
 export class MarkdownToolModule {}
