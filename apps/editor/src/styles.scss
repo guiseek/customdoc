@@ -3,6 +3,9 @@
 @import 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,800;0,900;1,500&display=swap';
 @import '~@angular/cdk/overlay';
 @include cdk-overlay();
+
+@import 'libs/common/markdown-tool/src/lib/markdown-tool';
+
 html,
 body {
   margin: 0;

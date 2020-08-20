@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  > .markdown-button {
+    svg {
+      margin-left: 6px;
+    }
+  }
+}
