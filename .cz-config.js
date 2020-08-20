@@ -12,6 +12,7 @@ module.exports = {
       value: 'chore',
       name: "chore:    Outras mudanças que não modificam arquivos em src ou de teste",
     },
+    { value: 'CI', name: 'CI:       Integração contínua / Pipeline / Esteira' },
   ],
 
   scopes: [
