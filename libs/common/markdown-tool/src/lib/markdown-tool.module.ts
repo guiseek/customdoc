@@ -11,6 +11,7 @@ import { MarkdownToolbarContainer } from './markdown-toolbar/markdown-toolbar.co
 import { MarkdownToolbarTriggerDirective } from './markdown-toolbar/markdown-toolbar-trigger.directive';
 import { MarkdownOptionsComponent } from './markdown-options/markdown-options.component';
 import { MarkdownToolbarArrowDirective } from './markdown-toolbar/markdown-toolbar-arrow.directive';
+import { MarkdownDropdownComponent } from './markdown-dropdown/markdown-dropdown.component';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule, PortalModule, OverlayModule],
@@ -23,6 +24,7 @@ import { MarkdownToolbarArrowDirective } from './markdown-toolbar/markdown-toolb
     MarkdownToolbarTriggerDirective,
     MarkdownOptionsComponent,
     MarkdownToolbarArrowDirective,
+    MarkdownDropdownComponent,
   ],
   exports: [
     MarkdownContentComponent,
@@ -33,6 +35,7 @@ import { MarkdownToolbarArrowDirective } from './markdown-toolbar/markdown-toolb
     MarkdownToolbarTriggerDirective,
     MarkdownOptionsComponent,
     MarkdownToolbarArrowDirective,
+    MarkdownDropdownComponent,
   ],
 })
 export class MarkdownToolModule {}

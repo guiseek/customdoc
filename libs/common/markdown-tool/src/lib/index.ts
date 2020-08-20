@@ -1,3 +1,4 @@
+export * from './markdown-dropdown/index';
 export * from './markdown-content/index';
 export * from './markdown-options/index';
 export * from './markdown-preview/index';

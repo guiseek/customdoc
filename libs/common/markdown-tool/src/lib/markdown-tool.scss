@@ -1,0 +1,42 @@
+.markdown-toolbar-set {
+  display: flex;
+
+  overflow: hidden;
+  border-radius: 3px;
+
+  margin: 2px;
+
+  &:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .markdown-button {
+    border: 0;
+    background-color: #fafafa;
+    flex: 1;
+    min-width: 26px;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+  }
+}
+.markdown-dropdown {
+  display: flex;
+  flex-flow: column;
+  border-radius: 4px;
+  background-color: #444;
+  overflow: hidden;
+
+  .markdown-button {
+    min-width: 48px;
+    min-height: 24px;
+    border-radius: 4px;
+    background: white;
+    margin-right: 0;
+    &:not(:last-child) {
+      border-bottom-width: 0px;
+    }
+  }
+}

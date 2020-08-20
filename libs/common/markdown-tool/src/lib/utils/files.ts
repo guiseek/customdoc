@@ -9,3 +9,11 @@ export function saveFile(data: BlobPart, name: string, type?: string) {
   a.download = name;
   a.click();
 }
+
+export function modifySelection(
+  { textContent }: Node,
+  prefix: string,
+  suffix = ''
+) {
+  return `${prefix}${textContent}${suffix}`;
+}

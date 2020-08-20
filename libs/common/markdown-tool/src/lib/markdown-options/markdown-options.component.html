@@ -18,6 +18,74 @@
     <i class="fa fa-repeat"></i>
   </button>
 </div>
+
+<div class="markdown-toolbar-set">
+  <markdown-dropdown>
+    <label>Header</label>
+
+    <button
+      [id]="'h1-' + id"
+      type="button"
+      title="Header 1"
+      class="markdown-button"
+      (click)="triggerCommand('h1')"
+      tabindex="-1"
+    >
+      Header 1
+    </button>
+    <button
+      [id]="'h2-' + id"
+      type="button"
+      title="Header 2"
+      class="markdown-button"
+      (click)="triggerCommand('h2')"
+      tabindex="-1"
+    >
+      Header 2
+    </button>
+    <button
+      [id]="'h3-' + id"
+      type="button"
+      title="Header 3"
+      class="markdown-button"
+      (click)="triggerCommand('h3')"
+      tabindex="-1"
+    >
+      Header 3
+    </button>
+    <button
+      [id]="'h4-' + id"
+      type="button"
+      title="Header 4"
+      class="markdown-button"
+      (click)="triggerCommand('h4')"
+      tabindex="-1"
+    >
+      Header 4
+    </button>
+    <button
+      [id]="'h5-' + id"
+      type="button"
+      title="Header 5"
+      class="markdown-button"
+      (click)="triggerCommand('h5')"
+      tabindex="-1"
+    >
+      Header 5
+    </button>
+    <button
+      [id]="'h6-' + id"
+      type="button"
+      title="Header 56"
+      class="markdown-button"
+      (click)="triggerCommand('h6')"
+      tabindex="-1"
+    >
+      Header 6
+    </button>
+  </markdown-dropdown>
+</div>
+
 <div class="markdown-toolbar-set">
   <button
     [id]="'bold-' + id"
@@ -42,73 +110,21 @@
 </div>
 <div class="markdown-toolbar-set">
   <button
-    [id]="'h1-' + id"
-    type="button"
-    title="Header 1"
-    class="markdown-button"
-    (click)="triggerCommand('h1')"
-    tabindex="-1"
-  >
-    H1
-  </button>
-  <button
-    [id]="'h2-' + id"
-    type="button"
-    title="Header 2"
-    class="markdown-button"
-    (click)="triggerCommand('h2')"
-    tabindex="-1"
-  >
-    H2
-  </button>
-  <button
-    [id]="'h3-' + id"
-    type="button"
-    title="Header 3"
-    class="markdown-button"
-    (click)="triggerCommand('h3')"
-    tabindex="-1"
-  >
-    H3
-  </button>
-  <button
-    [id]="'h4-' + id"
-    type="button"
-    title="Header 4"
-    class="markdown-button"
-    (click)="triggerCommand('h4')"
-    tabindex="-1"
-  >
-    H4
-  </button>
-  <button
-    [id]="'h5-' + id"
-    type="button"
-    title="Header 5"
-    class="markdown-button"
-    (click)="triggerCommand('h5')"
-    tabindex="-1"
-  >
-    H5
-  </button>
-</div>
-<div class="markdown-toolbar-set">
-  <button
-    [id]="'insertUnorderedList-' + id"
+    [id]="'ul-' + id"
     type="button"
     title="Unordered List"
     class="markdown-button"
-    (click)="triggerCommand('insertUnorderedList')"
+    (click)="triggerCommand('ul')"
     tabindex="-1"
   >
     <i class="fa fa-list-ul"></i>
   </button>
   <button
-    [id]="'insertOrderedList-' + id"
+    [id]="'ol-' + id"
     type="button"
     title="Ordered List"
     class="markdown-button"
-    (click)="triggerCommand('insertOrderedList')"
+    (click)="triggerCommand('ol')"
     tabindex="-1"
   >
     <i class="fa fa-list-ol"></i>

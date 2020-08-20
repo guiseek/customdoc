@@ -365,7 +365,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx semantic-release -d"
+                "command": "npx semantic-release"
               }
             ],
             "cwd": "libs/common/compodoc-viewer"
