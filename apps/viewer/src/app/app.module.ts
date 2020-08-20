@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CompodocViewerModule } from '@customdoc/common/compodoc-viewer';
+import { PaginatorStoreModule } from '@customdoc/paginator-store';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
@@ -15,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     HttpClientModule,
     CompodocViewerModule,
+    PaginatorStoreModule,
     ReactiveFormsModule,
     AppRoutingModule
   ],

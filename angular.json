@@ -509,6 +509,76 @@
           }
         }
       }
+    },
+    "common-paginator-store": {
+      "projectType": "library",
+      "root": "libs/common/paginator-store",
+      "sourceRoot": "libs/common/paginator-store/src",
+      "prefix": "customdoc",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/common/paginator-store/tsconfig.lib.json",
+            "project": "libs/common/paginator-store/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/common/paginator-store/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/paginator-store/tsconfig.lib.json",
+              "libs/common/paginator-store/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/common/paginator-store/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/paginator-store/jest.config.js",
+            "tsConfig": "libs/common/paginator-store/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/common/paginator-store/src/test-setup.ts"
+          }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "libs/common/paginator-store/tsconfig.lib.json",
+            "outputPath": "dist/compodoc/common-paginator-store"
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            }
+          }
+        },
+        "release": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx semantic-release"
+              }
+            ],
+            "cwd": "libs/common/paginator-store"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
@@ -520,7 +590,8 @@
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "strict": true
     }
   },
   "defaultProject": "editor"

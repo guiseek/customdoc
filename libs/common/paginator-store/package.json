@@ -1,5 +1,5 @@
 {
-  "name": "@customdoc/common-compodoc-viewer",
+  "name": "@customdoc/paginator-store",
   "version": "0.0.1",
   "author": {
     "name": "Guilherme Siquinelli",
@@ -10,7 +10,6 @@
     "type": "git",
     "url": "https://github.com/guiseek/customdoc.git"
   },
-  "private": false,
   "peerDependencies": {
     "@angular/common": "^10.0.9",
     "@angular/core": "^10.0.9"
