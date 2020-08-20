@@ -50,6 +50,9 @@
     },
     "util-testing": {
       "tags": []
+    },
+    "common-paginator-store": {
+      "tags": []
     }
   }
 }

@@ -1,0 +1,76 @@
+$paginator-padding: 0 8px;
+$paginator-page-size-margin-right: 8px;
+
+$paginator-items-per-page-label-margin: 0 4px;
+$paginator-selector-margin: 6px 4px 0 4px;
+$paginator-selector-trigger-width: 56px;
+$paginator-selector-trigger-outline-width: 64px;
+$paginator-selector-trigger-fill-width: 64px;
+
+$paginator-range-label-margin: 0 32px 0 24px;
+$paginator-button-icon-size: 28px;
+
+.paginator {
+  display: block;
+}
+
+// Observação: este elemento de invólucro é usado apenas para fazer a centralização vertical do flexbox funcionar
+// com `min-height` no IE11. Ele pode ser removido se descartarmos o suporte para o IE.
+.paginator-outer-container {
+  display: flex;
+}
+
+.paginator-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: $paginator-padding;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+}
+
+.paginator-page-size {
+  display: flex;
+  align-items: baseline;
+  margin-right: $paginator-page-size-margin-right;
+
+  [dir='rtl'] & {
+    margin-right: 0;
+    margin-left: $paginator-page-size-margin-right;
+  }
+}
+
+.paginator-page-size-label {
+  margin: $paginator-items-per-page-label-margin;
+}
+
+.paginator-page-size-select {
+  margin: $paginator-selector-margin;
+  width: $paginator-selector-trigger-width;
+
+  &.form-field-appearance-outline {
+    width: $paginator-selector-trigger-outline-width;
+  }
+
+  &.form-field-appearance-fill {
+    width: $paginator-selector-trigger-fill-width;
+  }
+}
+
+.paginator-range-label {
+  margin: $paginator-range-label-margin;
+}
+
+.paginator-range-actions {
+  display: flex;
+  align-items: center;
+}
+
+.paginator-icon {
+  width: $paginator-button-icon-size;
+  fill: currentColor;
+
+  [dir='rtl'] & {
+    transform: rotate(180deg);
+  }
+}

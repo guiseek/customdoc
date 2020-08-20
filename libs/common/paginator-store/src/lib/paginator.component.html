@@ -1,0 +1,92 @@
+<div class="paginator-outer-container" *ngIf="vm$ | async as vm">
+  <div class="paginator-container">
+    <div class="paginator-page-size">
+      <div class="paginator-page-size-label">
+        Items per page
+      </div>
+
+      <div
+        *ngIf="vm.pageSizeOptions.length > 1"
+        class="paginator-page-size-select"
+      >
+        <select
+          [value]="vm.pageSize"
+          (selectionChange)="changePageSize($any($event).value)"
+        >
+          <option
+            *ngFor="let pageSizeOption of vm.pageSizeOptions"
+            [value]="pageSizeOption"
+          >
+            {{ pageSizeOption }}
+          </option>
+        </select>
+      </div>
+
+      <div
+        class="paginator-page-size-value"
+        *ngIf="vm.pageSizeOptions.length <= 1"
+      >
+        {{ vm.pageSize }}
+      </div>
+    </div>
+
+    <div class="paginator-range-actions">
+      <div class="paginator-range-label">
+        {{ vm.rangeLabel }}
+      </div>
+
+      <button
+        icon-button
+        type="button"
+        class="paginator-navigation-first"
+        (click)="firstPage()"
+        matTooltip="First page"
+        [disabled]="!vm.hasPreviousPage"
+      >
+        <svg class="paginator-icon" viewBox="0 0 24 24" focusable="false">
+          <path
+            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+          />
+        </svg>
+      </button>
+      <button
+        icon-button
+        type="button"
+        class="paginator-navigation-previous"
+        (click)="previousPage()"
+        [attr.aria-label]="'Previous Page'"
+        [disabled]="!vm.hasPreviousPage"
+      >
+        <svg class="paginator-icon" viewBox="0 0 24 24" focusable="false">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+        </svg>
+      </button>
+      <button
+        icon-button
+        type="button"
+        class="paginator-navigation-next"
+        (click)="nextPage()"
+        [attr.aria-label]="'Next Page'"
+        [disabled]="!vm.hasNextPage"
+      >
+        <svg class="paginator-icon" viewBox="0 0 24 24" focusable="false">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+        </svg>
+      </button>
+      <button
+        icon-button
+        type="button"
+        class="paginator-navigation-last"
+        (click)="lastPage()"
+        [attr.aria-label]="'Last Page'"
+        [disabled]="!vm.hasNextPage"
+      >
+        <svg class="paginator-icon" viewBox="0 0 24 24" focusable="false">
+          <path
+            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

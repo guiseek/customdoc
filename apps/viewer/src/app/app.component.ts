@@ -47,4 +47,7 @@ export class AppComponent implements OnInit {
       this.router.navigate(['project', project.name]);
     }
   }
+  log(obj: unknown) {
+    console.log(obj);
+  }
 }
