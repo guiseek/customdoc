@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/guiseek/customdoc.git"
+    "url": "https://github.com/guiseek/customdoc.git"
   },
   "scripts": {
     "ng": "nx",
@@ -90,6 +90,7 @@
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.0.7",
     "@semantic-release/gitlab": "^6.0.4",
     "@twittwer/compodoc": "^1.3.2",
     "@types/jest": "25.1.4",

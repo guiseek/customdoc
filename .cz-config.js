@@ -3,6 +3,7 @@ module.exports = {
     { value: 'feat', name: 'feat:     Uma nova feature' },
     { value: 'fix', name: 'fix:      Correção de um bug' },
     { value: 'docs', name: 'docs:     Apenas documentação' },
+    { value: 'build', name: 'build:    Apenas o build é afetado' },
     {
       value: 'cleanup',
       name:
@@ -12,7 +13,7 @@ module.exports = {
       value: 'chore',
       name: "chore:    Outras mudanças que não modificam arquivos em src ou de teste",
     },
-    { value: 'CI', name: 'CI:       Integração contínua / Pipeline / Esteira' },
+    { value: 'ci', name: 'ci:       Integração contínua / Pipeline / Esteira' },
   ],
 
   scopes: [

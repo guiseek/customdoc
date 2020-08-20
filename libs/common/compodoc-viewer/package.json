@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/guiseek/customdoc.git"
+    "url": "https://github.com/guiseek/customdoc.git"
   },
   "private": false,
   "peerDependencies": {
