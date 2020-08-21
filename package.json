@@ -37,7 +37,7 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "prerelease": "nx affected:build --all",
-    "release": "nx affected --target release --projects=paginator-store",
+    "release": "nx affected --target release --all",
     "commit": "git-cz"
   },
   "husky": {
