@@ -1,6 +1,6 @@
 {
   "name": "@customdoc/paginator-store",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "author": {
     "name": "Guilherme Siquinelli",
     "email": "guiseek@gmail.com",
@@ -12,9 +12,16 @@
   },
   "peerDependencies": {
     "@angular/common": "^10.0.9",
-    "@angular/core": "^10.0.9"
+    "@angular/core": "^10.0.9",
+    "@ngrx/component-store": "^10.0.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"
+  },
+  "scripts": {
+    "semantic-release": "semantic-release"
+  },
+  "devDependencies": {
+    "semantic-release": "^17.1.1"
   }
 }
