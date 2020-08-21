@@ -21,6 +21,7 @@ module.exports = {
     { name: 'core', description: 'qualquer coisa específica no core' },
     { name: 'scully', description: 'qualquer coisa específica sobre Scully' },
     { name: 'docs', description: 'qualquer coisa específica sobre documentação' },
+    { name: 'paginator', description: 'qualquer coisa específica sobre paginator' },
     { name: 'compodoc', description: 'qualquer coisa específica sobre documentação COM compodoc' },
     { name: 'markdown', description: 'qualquer coisa específica sobre Markdown' },
     { name: 'plugin', description: 'qualquer coisa específica sobre Plugin (nx ou scully)' },
