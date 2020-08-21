@@ -365,7 +365,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx semantic-release"
+                "command": "npx semantic-release --dry-run"
               }
             ],
             "cwd": "libs/common/compodoc-viewer"
@@ -430,7 +430,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx semantic-release"
+                "command": "npx semantic-release --dry-run"
               }
             ],
             "cwd": "libs/common/markdown-tool"
@@ -510,7 +510,7 @@
         }
       }
     },
-    "common-paginator-store": {
+    "paginator-store": {
       "projectType": "library",
       "root": "libs/common/paginator-store",
       "sourceRoot": "libs/common/paginator-store/src",
@@ -567,7 +567,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx semantic-release"
+                "command": "npx semantic-release --dry-run"
               }
             ],
             "cwd": "libs/common/paginator-store"

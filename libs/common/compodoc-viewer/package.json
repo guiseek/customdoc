@@ -1,11 +1,7 @@
 {
   "name": "@customdoc/common-compodoc-viewer",
   "version": "0.0.1",
-  "author": {
-    "name": "Guilherme Siquinelli",
-    "email": "guiseek@gmail.com",
-    "url": "https://guiseek.dev.br"
-  },
+  "author": "Guilherme Siquinelli <guiseek@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/guiseek/customdoc.git"

@@ -51,7 +51,7 @@
     "util-testing": {
       "tags": []
     },
-    "common-paginator-store": {
+    "paginator-store": {
       "tags": []
     }
   }
