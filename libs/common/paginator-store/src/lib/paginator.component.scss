@@ -4,8 +4,6 @@ $paginator-page-size-margin-right: 8px;
 $paginator-items-per-page-label-margin: 0 4px;
 $paginator-selector-margin: 6px 4px 0 4px;
 $paginator-selector-trigger-width: 56px;
-$paginator-selector-trigger-outline-width: 64px;
-$paginator-selector-trigger-fill-width: 64px;
 
 $paginator-range-label-margin: 0 32px 0 24px;
 $paginator-button-icon-size: 28px;
@@ -47,14 +45,6 @@ $paginator-button-icon-size: 28px;
 .paginator-page-size-select {
   margin: $paginator-selector-margin;
   width: $paginator-selector-trigger-width;
-
-  &.form-field-appearance-outline {
-    width: $paginator-selector-trigger-outline-width;
-  }
-
-  &.form-field-appearance-fill {
-    width: $paginator-selector-trigger-fill-width;
-  }
 }
 
 .paginator-range-label {
