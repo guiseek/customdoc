@@ -21,8 +21,13 @@
             "polyfills": "apps/editor/src/polyfills.ts",
             "tsConfig": "apps/editor/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/editor/src/favicon.ico", "apps/editor/src/assets"],
-            "styles": ["apps/editor/src/styles.scss"],
+            "assets": [
+              "apps/editor/src/favicon.ico",
+              "apps/editor/src/assets"
+            ],
+            "styles": [
+              "apps/editor/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -80,7 +85,10 @@
               "apps/editor/tsconfig.app.json",
               "apps/editor/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/editor/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/editor/**/*"
+            ]
           }
         },
         "test": {
@@ -113,8 +121,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/editor-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/editor-e2e/**/*"]
+            "tsConfig": [
+              "apps/editor-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/editor-e2e/**/*"
+            ]
           }
         }
       }
@@ -144,7 +157,10 @@
               "libs/common/split-content/tsconfig.lib.json",
               "libs/common/split-content/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/common/split-content/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/common/split-content/**/*"
+            ]
           }
         },
         "test": {
@@ -210,7 +226,9 @@
                 "output": "./compodoc"
               }
             ],
-            "styles": ["apps/viewer/src/styles.scss"],
+            "styles": [
+              "apps/viewer/src/styles.scss"
+            ],
             "scripts": [],
             "allowedCommonJsDependencies": [
               "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard"
@@ -271,7 +289,10 @@
               "apps/viewer/tsconfig.app.json",
               "apps/viewer/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/viewer/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/viewer/**/*"
+            ]
           }
         },
         "test": {
@@ -304,8 +325,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/viewer-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/viewer-e2e/**/*"]
+            "tsConfig": [
+              "apps/viewer-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/viewer-e2e/**/*"
+            ]
           }
         }
       }
@@ -403,7 +429,10 @@
               "libs/common/markdown-tool/tsconfig.lib.json",
               "libs/common/markdown-tool/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/common/markdown-tool/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/common/markdown-tool/**/*"
+            ]
           }
         },
         "test": {
@@ -468,7 +497,10 @@
               "libs/util/content/tsconfig.lib.json",
               "libs/util/content/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/util/content/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/util/content/**/*"
+            ]
           }
         },
         "test": {
@@ -498,7 +530,10 @@
               "libs/util/testing/tsconfig.lib.json",
               "libs/util/testing/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/util/testing/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/util/testing/**/*"
+            ]
           }
         },
         "test": {
@@ -577,6 +612,127 @@
       "schematics": {
         "@nrwl/angular:component": {
           "style": "scss"
+        }
+      }
+    },
+    "custom-paginator-store": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@nrwl/angular:class": {
+          "skipTests": true
+        },
+        "@nrwl/angular:component": {
+          "inlineTemplate": true,
+          "inlineStyle": true,
+          "skipTests": true
+        },
+        "@nrwl/angular:directive": {
+          "skipTests": true
+        },
+        "@nrwl/angular:guard": {
+          "skipTests": true
+        },
+        "@nrwl/angular:module": {
+          "skipTests": true
+        },
+        "@nrwl/angular:pipe": {
+          "skipTests": true
+        },
+        "@nrwl/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "apps/custom/paginator-store",
+      "sourceRoot": "apps/custom/paginator-store/src",
+      "prefix": "customdoc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/custom/paginator-store",
+            "index": "apps/custom/paginator-store/src/index.html",
+            "main": "apps/custom/paginator-store/src/main.ts",
+            "polyfills": "apps/custom/paginator-store/src/polyfills.ts",
+            "tsConfig": "apps/custom/paginator-store/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/custom/paginator-store/src/favicon.ico",
+              "apps/custom/paginator-store/src/assets"
+            ],
+            "styles": [
+              "apps/custom/paginator-store/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/custom/paginator-store/src/environments/environment.ts",
+                  "with": "apps/custom/paginator-store/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "build-concat": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "npm run custom:build && npm run custom:concat"
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "custom-paginator-store:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "custom-paginator-store:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "custom-paginator-store:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/custom/paginator-store/tsconfig.app.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/custom/paginator-store/**/*"
+            ]
+          }
         }
       }
     }

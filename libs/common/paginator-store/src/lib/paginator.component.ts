@@ -43,7 +43,7 @@ export class PaginatorComponent {
     // definindo padrões
     this.paginatorStore.setState({
       pageIndex: 0,
-      pageSize: 50,
+      pageSize: 10,
       length: 0,
       pageSizeOptions: new Set<number>([50]),
     });
