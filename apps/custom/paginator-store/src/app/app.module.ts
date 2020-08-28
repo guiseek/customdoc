@@ -1,5 +1,5 @@
-import { PaginatorStoreModule, PaginatorComponent } from '@customdoc/paginator-store';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, DoBootstrap, Injector, Type } from '@angular/core';
+import { PaginatorStoreModule, PaginatorComponent } from '@customdoc/paginator-store';
 import { BrowserModule } from '@angular/platform-browser';
 import { createCustomElement } from '@angular/elements';
 
