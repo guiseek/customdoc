@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/guiseek/customdoc.git"
+    "url": "git+https://github.com/guiseek/customdoc.git"
   },
   "scripts": {
     "ng": "nx",

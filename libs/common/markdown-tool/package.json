@@ -4,7 +4,7 @@
   "author": "Guilherme Siquinelli <guiseek@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/guiseek/customdoc.git"
+    "url": "git+https://github.com/guiseek/customdoc.git"
   },
   "private": false,
   "peerDependencies": {
