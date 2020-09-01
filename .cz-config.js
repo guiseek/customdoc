@@ -28,6 +28,7 @@ module.exports = {
     { name: 'web', description: 'qualquer coisa específica sobre Web Components' },
     { name: 'linter', description: 'qualquer coisa específica sobre Linter' },
     { name: 'storybook', description: 'qualquer coisa específica sobre Storybook' },
+    { name: 'tokens', description: 'qualquer coisa específica sobre Design Tokens' },
     {
       name: 'testing',
       description: 'qualquer coisa sobre testing (e.g., jest or cypress)',
