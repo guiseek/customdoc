@@ -1,4 +1,5 @@
 export * from './utils';
-export * from './figma';
 
-export * from './design-tokens';
+import { designTokens } from './design-tokens';
+
+designTokens();

@@ -1,14 +1,10 @@
-/**
- * Tipos gerados a partir da API Response
- * Apesar da lib @figma/plugin-typings ter
- * algumas caracteristicas em comuns, ela
- * não corresponde ao retornado, avaliar.
- *
- * @todo avaliar alternativas oficiais
- *
- * @export
- * @interface FigmaResponse
- */
+export interface RGB {
+  r: number;
+  g: number;
+  b: number;
+}
+
+export type RGBA = RGB & { a: number };
 
 export interface FigmaResponse {
   document: Document;
@@ -72,15 +68,15 @@ export interface Node {
   clipsContent?: boolean;
   background?: Background[];
   fills: Background[];
-  strokes: any[];
+  strokes: Strokes;
   strokeWeight: number;
   strokeAlign: StrokeAlign;
   backgroundColor?: Color;
-  effects: any[];
+  effects: Strokes;
   characters?: string;
   style?: Style;
-  characterStyleOverrides?: any[];
-  styleOverrideTable?: Record<string, any>;
+  characterStyleOverrides?: Strokes;
+  styleOverrideTable?: {};
   layoutGrids?: LayoutGrid[];
   styles?: StickyStyles;
 }
@@ -127,8 +123,8 @@ export interface FluffyChild {
   effects: Effect[];
   characters?: string;
   style?: Style;
-  characterStyleOverrides?: any[];
-  styleOverrideTable?: Record<string, any>;
+  characterStyleOverrides?: Strokes;
+  styleOverrideTable?: {};
   styles?: TentacledStyles;
   preserveRatio?: boolean;
   componentId?: string;
@@ -146,12 +142,12 @@ export interface TentacledChild {
   strokes: Background[];
   strokeWeight: number;
   strokeAlign: StrokeAlign;
-  effects: any[];
+  effects: Strokes;
   styles?: FluffyStyles;
   characters?: string;
   style?: Style;
-  characterStyleOverrides?: any[];
-  styleOverrideTable?: Record<string, any>;
+  characterStyleOverrides?: Strokes;
+  styleOverrideTable?: {};
   children?: StickyChild[];
   clipsContent?: boolean;
   background?: Background[];
@@ -159,9 +155,9 @@ export interface TentacledChild {
   cornerRadius?: number;
   rectangleCornerRadii?: number[];
   preserveRatio?: boolean;
-  exportSettings?: any[];
+  exportSettings?: Strokes;
   layoutVersion?: number;
-  layoutGrids?: any[];
+  layoutGrids?: Strokes;
   layoutMode?: string;
   itemSpacing?: number;
   horizontalPadding?: number;
@@ -180,11 +176,11 @@ export interface StickyChild {
   strokeWeight: number;
   strokeAlign: StrokeAlign;
   styles?: NodeStyles;
-  effects: any[];
+  effects: Strokes;
   characters?: CharactersEnum;
   style?: Style;
-  characterStyleOverrides?: any[];
-  styleOverrideTable?: Record<string, any>;
+  characterStyleOverrides?: Strokes;
+  styleOverrideTable?: {};
   visible?: boolean;
   layoutAlign?: string;
   cornerRadius?: number;
@@ -370,3 +366,5 @@ export interface PrototypeDevice {
   type: string;
   rotation: string;
 }
+
+type Strokes = any[];
