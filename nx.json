@@ -59,6 +59,9 @@
     },
     "design-tokens": {
       "tags": []
+    },
+    "common-device-viewer": {
+      "tags": []
     }
   }
 }

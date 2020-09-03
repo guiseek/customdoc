@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CompodocViewerModule } from '@customdoc/common/compodoc-viewer';
 import { PaginatorStoreModule } from '@customdoc/paginator-store';
+import { DeviceViewerModule } from '@customdoc/device-viewer';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     CompodocViewerModule,
     PaginatorStoreModule,
+    DeviceViewerModule,
     ReactiveFormsModule,
     AppRoutingModule
   ],

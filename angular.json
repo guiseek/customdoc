@@ -743,6 +743,50 @@
           }
         }
       }
+    },
+    "common-device-viewer": {
+      "projectType": "library",
+      "root": "libs/common/device-viewer",
+      "sourceRoot": "libs/common/device-viewer/src",
+      "prefix": "device",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/common/device-viewer/tsconfig.lib.json",
+            "project": "libs/common/device-viewer/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/common/device-viewer/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/device-viewer/tsconfig.lib.json",
+              "libs/common/device-viewer/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/device-viewer/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/device-viewer/jest.config.js",
+            "tsConfig": "libs/common/device-viewer/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/common/device-viewer/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

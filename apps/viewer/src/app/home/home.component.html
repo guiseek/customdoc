@@ -5,3 +5,12 @@
     <a [routerLink]="['/project', doc.name]">{{ doc.name }}</a>
   </li>
 </ul>
+
+<main>
+  <pre> {{ option.active$ | async | json }} </pre>
+  <device-viewer>
+    <device-options #option="deviceOptions"></device-options>
+
+    <device-frame src="https://guiseek.web.app/" [device]="option.active$ | async"></device-frame>
+  </device-viewer>
+</main>
