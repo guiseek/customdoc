@@ -39,3 +39,4 @@ testem.log
 Thumbs.db
 .env
 libs/design/tokens/figma.env
+ci.env
