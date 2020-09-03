@@ -29,8 +29,8 @@ jobs:
           npm run affected:lint -- --all
       - name: Unit Tests
         run: npm run affected:test -- --all
-      - name: Build, Release on GitHub & Publish to NPM
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm run release
+      # - name: Build, Release on GitHub & Publish to NPM
+        # env:
+        #   GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        # run: npm run release
